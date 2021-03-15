@@ -16,6 +16,7 @@ bool TermsList::getNewTermsList()
 }
 
 // A constructor for the termsArry class.  It assigns values to ther terms array.  
+// This is the default for when they do not get the terms from a file.
 TermsList::TermsList()
 {	// Removed because this information will be moved to a file
 
@@ -37,6 +38,7 @@ TermsList::TermsList()
 
 }
 
+// used to get the size of the file.
 TermsList::TermsList(int iSize)
 {
 	this->dTerms.resize(iSize);

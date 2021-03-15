@@ -1,12 +1,14 @@
 #include "FileMangement.h"
 
 //A override that assigns the name of the file.
+//used when a file name is not provided.
 FileMangement::FileMangement()
 {
 }
 
 
 //A override that assigns the name of the file.
+//used when a file name is provided.
 FileMangement::FileMangement(std::string& sFileName)
 {
 	this->sFileName = sFileName;

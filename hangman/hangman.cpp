@@ -40,7 +40,7 @@ void Hangman::startGame()
                 if (!wordControler.getbWordupdate() && iIncorrectLetterCount <= 10) {
                     cout << "Letter not found" << endl;
                     iIncorrectLetterCount++;
-                    sHint = hint.giveHint(this->iPos);
+                    sHint = wordControler.giveHint(this->iPos);
                 }
                 else {
                     iPointcounter++;

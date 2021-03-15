@@ -11,7 +11,6 @@ CONFIG += c++11
 SOURCES += \
     hangman/FileMangement.cpp \
     hangman/HighScore.cpp \
-    hangman/Hint.cpp \
     hangman/TermsList.cpp \
     hangman/hangman.cpp \
     hangman/wordControler.cpp \
@@ -23,7 +22,6 @@ SOURCES += \
 HEADERS += \
     hangman/FileMangement.h \
     hangman/HighScore.h \
-    hangman/Hint.h \
     hangman/TermsList.h \
     hangman/hangman.h \
     hangman/wordControler.h \

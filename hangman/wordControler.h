@@ -32,6 +32,7 @@ public:
 	bool getbWordupdate();
 
 	void clearOutWord();
+    string giveHint(int&);
 
 };
 

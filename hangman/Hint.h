@@ -5,6 +5,6 @@ class Hint
 {
 public:
 	// A switch sttement for giving hints
-	string giveHint(int&);
+
 };
 
