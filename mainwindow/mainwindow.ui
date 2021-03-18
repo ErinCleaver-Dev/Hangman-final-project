@@ -822,6 +822,27 @@ border-radius: 3px;</string>
    </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menufile">
+    <property name="title">
+     <string>file</string>
+    </property>
+    <addaction name="actionMain_menu"/>
+    <addaction name="actionHangman"/>
+    <addaction name="actionHighscore"/>
+    <addaction name="separator"/>
+    <addaction name="actionExit"/>
+   </widget>
+   <addaction name="menufile"/>
+  </widget>
   <action name="qtMainMenu">
    <property name="text">
     <string>Main Menu</string>
@@ -830,6 +851,26 @@ border-radius: 3px;</string>
   <action name="atExit">
    <property name="text">
     <string>exit</string>
+   </property>
+  </action>
+  <action name="actionMain_menu">
+   <property name="text">
+    <string>Main menu</string>
+   </property>
+  </action>
+  <action name="actionHangman">
+   <property name="text">
+    <string>Hangman</string>
+   </property>
+  </action>
+  <action name="actionHighscore">
+   <property name="text">
+    <string>Highscore</string>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="text">
+    <string>Exit</string>
    </property>
   </action>
  </widget>

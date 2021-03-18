@@ -96,7 +96,7 @@ void FileMangement::createFile(std::string& createFile)
 //Used to modifiy existing files by getting the map for high score and the the file name.
 void FileMangement::updateFile(std::string& openFile, QMap<std::string, int>& mValue)
 {
-	newFile.open(openFile, ios::app);
+    newFile.open(openFile, std::ios::out | ios::app);
 	//checks to make sure hte file is open
 	if (newFile.good()) {
 		//getts the information from the map and places it in the file.
