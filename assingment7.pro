@@ -11,21 +11,23 @@ CONFIG += c++11
 SOURCES += \
     hangman/FileMangement.cpp \
     hangman/HighScore.cpp \
-    hangman/TermsList.cpp \
+    hangman/StringList.cpp \
     hangman/hangman.cpp \
     hangman/wordControler.cpp \
     main/main.cpp \
     mainwindow/mainwindow.cpp \
+    mainwindow/splashscreen.cpp \
     validation/validation.cpp
 
 
 HEADERS += \
     hangman/FileMangement.h \
     hangman/HighScore.h \
-    hangman/TermsList.h \
+    hangman/StringList.h \
     hangman/hangman.h \
     hangman/wordControler.h \
     mainwindow/mainwindow.h \
+    mainwindow/splashscreen.h \
     validation/validation.h
 
 
@@ -36,4 +38,5 @@ FORMS += \
 
 DISTFILES += \
     hangman/highScroe.txt \
-    hangman/termsfile.txt
+    hangman/termsfile.txt \
+    mainwindow/quotes.txt

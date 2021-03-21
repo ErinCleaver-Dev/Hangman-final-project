@@ -9,7 +9,7 @@
 #include <string>
 #include <deque>
 using namespace std;
-class TermsList
+class StringList
 {
 private:
 
@@ -20,12 +20,12 @@ private:
 public:
 
 	// constructors 
-	TermsList();
+    StringList();
 	// A override that get the number of terms 
-	TermsList(int);
+    StringList(int);
 
 	// Destructors
-	~TermsList();
+    ~StringList();
 
 	void setNewTermsList(bool);
 	

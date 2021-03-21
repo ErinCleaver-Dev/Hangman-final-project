@@ -3,7 +3,7 @@
 #include <string>
 #include <map>
 #include <iostream>
-#include "TermsList.h"
+#include "StringList.h"
 #include <QMap>
 
 using namespace std;
@@ -28,10 +28,10 @@ public:
     FileMangement(std::string);
 	
 	//counts number of words in the file
-	int countWords();
+    int countStrings();
 
 	// Reads the Array of terms 
-	void readFile(TermsList&);
+    void readFile(StringList&);
 	
 	//Use to create files
 	void createFile(std::string& createFile);

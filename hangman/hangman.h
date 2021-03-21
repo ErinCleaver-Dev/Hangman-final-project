@@ -1,6 +1,6 @@
 #pragma once
 #include "wordControler.h"
-#include "TermsList.h"
+#include "StringList.h"
 #include "Hint.h"
 #include "HighScore.h"
 #include <iostream>
@@ -29,7 +29,7 @@ public:
 	//starts up the game
     void setName(string);
     string getName();
-    void setTerm (TermsList&,int&);
+    void setTerm (StringList&,int&);
     void startGame();
 	//used to display the highscore
     string getIncorrectLetters();

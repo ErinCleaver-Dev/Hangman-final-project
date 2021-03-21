@@ -7,17 +7,17 @@
 
 
 using namespace std;
-#include "TermsList.h"
+#include "StringList.h"
 
 
-bool TermsList::getNewTermsList()
+bool StringList::getNewTermsList()
 {
 	return this->bNewList;
 }
 
 // A constructor for the termsArry class.  It assigns values to ther terms array.  
 // This is the default for when they do not get the terms from a file.
-TermsList::TermsList()
+StringList::StringList()
 {	// Removed because this information will be moved to a file
 
 	this->bNewList = false;
@@ -39,7 +39,7 @@ TermsList::TermsList()
 }
 
 // used to get the size of the file.
-TermsList::TermsList(int iSize)
+StringList::StringList(int iSize)
 {
 	this->dTerms.resize(iSize);
 }
@@ -48,11 +48,11 @@ TermsList::TermsList(int iSize)
 
 
 // Destructors
-TermsList::~TermsList()
+StringList::~StringList()
 {
 }
 
-void TermsList::setNewTermsList(bool bValue)
+void StringList::setNewTermsList(bool bValue)
 {
 	
 	this->bNewList = bValue;
@@ -60,7 +60,7 @@ void TermsList::setNewTermsList(bool bValue)
 }
 
 // Function to get terms from file
-void TermsList::setTerms(int iPos, string& sValue)
+void StringList::setTerms(int iPos, string& sValue)
 {
 	this->dTerms[iPos] = sValue;
 
@@ -69,14 +69,14 @@ void TermsList::setTerms(int iPos, string& sValue)
 
 
 // Selects the current term
-string TermsList::getSelectedTerm(int &iPos)
+string StringList::getSelectedTerm(int &iPos)
 {
 
 	return dTerms.at(iPos);
 
 }
 
-int TermsList::getSize()
+int StringList::getSize()
 {
 	return dTerms.size();
 }

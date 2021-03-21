@@ -11,7 +11,7 @@ FileMangement::FileMangement(std::string sFileName)
 }
 
 //counts number of words in the file
-int FileMangement::countWords()
+int FileMangement::countStrings()
 {
 	openFile();
 	int iValue = 0;
@@ -35,7 +35,7 @@ int FileMangement::countWords()
 
 
 // Reads the Array of terms 
-void FileMangement::readFile(TermsList& termsArray)
+void FileMangement::readFile(StringList& termsArray)
 {
 	
 	openFile();

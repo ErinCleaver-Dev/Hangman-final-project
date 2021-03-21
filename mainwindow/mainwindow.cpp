@@ -8,7 +8,7 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow),
       accessFile("termsfile.txt"),
-      termsFromFile(accessFile.countWords())
+      termsFromFile(accessFile.countStrings())
 
 {
     ui->setupUi(this);

@@ -2,7 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "../hangman/TermsList.h"
+#include "../hangman/StringList.h"
 #include "../hangman/FileMangement.h"
 #include "../hangman/hangman.h"
 #include <QMessageBox>
@@ -51,9 +51,9 @@ private:
     Ui::MainWindow *ui;
     Hangman hangman;
     FileMangement accessFile;
-    TermsList termslist;
+    StringList termslist;
     QMap<string, int> gMap;
-    TermsList termsFromFile;
+    StringList termsFromFile;
     string sValue;
     int iFirstValue;
     Validation validation;
