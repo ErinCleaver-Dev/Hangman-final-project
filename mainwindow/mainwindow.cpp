@@ -7,6 +7,7 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow),
+      accessFile("termsfile.txt"),
       termsFromFile(accessFile.countWords())
 
 {
@@ -14,6 +15,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->stackedWidget->setCurrentIndex(0);
     //hangman.createMap(gMap);
     hangman.accessHighScoreFile();
+
 
 }
 

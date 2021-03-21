@@ -21,7 +21,6 @@ private:
     string sHint;
     string sGuess;
     string sCurrentTerm;
-    FileMangement accessFile;
 
 public:
 	// gets the map for the highscore

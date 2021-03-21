@@ -7,7 +7,9 @@
 using namespace std;
 
 //assigns values to the variables 
-HighScore::HighScore() {
+HighScore::HighScore() :
+    accessFile("highScroe.txt")
+    {
     this->iStoreScore = 0;
     this->fileAccessed = false;
     this->sfileName = "highScroe.txt";
@@ -41,7 +43,7 @@ void HighScore::createUser(string& name) {
 // Used to display the high score.  Gets the information from accessfile
 QSet<pair<int, string>> HighScore::displayHighScore() {
    
-    QMap<string, int> highScore = accessFile.AccessFile(sfileName);
+    QMap<string, int> highScore = accessFile.AccessFile();
 
     QSet<pair<int, string>> setHighScore;
     // Then goes's through the for loop for the map

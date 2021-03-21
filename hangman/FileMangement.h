@@ -19,18 +19,13 @@ private:
 	ofstream newFile;
 	bool bFileOpen;
 	//checks to see if file is open
-	void openFile(std::string&);
 	//checks to see if file is open
 	void openFile();
 
 
 public:
-	//A override that assigns the name of the file.
-
-	FileMangement();
-
-	//A override that gets the name of the file.
-	FileMangement(std::string&);
+    //A override that gets the name of the file.
+    FileMangement(std::string);
 	
 	//counts number of words in the file
 	int countWords();
@@ -47,7 +42,7 @@ public:
 	bool fileExists(std::string& sFilename);
 
 	//access the file and feeds the information into high score.
-    QMap<std::string, int> AccessFile(string sFilename);
+    QMap<std::string, int> AccessFile();
 
 };
 

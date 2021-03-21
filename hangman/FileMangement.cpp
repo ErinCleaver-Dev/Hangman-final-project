@@ -2,14 +2,10 @@
 
 //A override that assigns the name of the file.
 //used when a file name is not provided.
-FileMangement::FileMangement()
-{
-}
-
 
 //A override that assigns the name of the file.
 //used when a file name is provided.
-FileMangement::FileMangement(std::string& sFileName)
+FileMangement::FileMangement(std::string sFileName)
 {
 	this->sFileName = sFileName;
 }
@@ -60,32 +56,21 @@ void FileMangement::readFile(TermsList& termsArray)
 }
 
 //Use to open files in gernal 
-void FileMangement::openFile(std::string& fileName)
-{
-	this->bFileOpen = false;
-
-	this->sFileName = fileName;
-    this->fsOpenFile.open(this->sFileName);
-	if (this->fsOpenFile.is_open()) {
-        cout << "testing" << endl;
-		this->bFileOpen = true;
-	}
-
-}
 
 
 //Use to open files in gernal 
 void FileMangement::openFile()
 {
-    this->sFileName = "termsfile.txt";
-	this->bFileOpen = true;
-	this->fsOpenFile.open(sFileName);
+    if(fileExists(this->sFileName)) {
+        this->bFileOpen = true;
+        this->fsOpenFile.open(this->sFileName);
+    }
 }
 
 //Use to create files
 void FileMangement::createFile(std::string& createFile)
 {
-	openFile(createFile);
+    openFile();
 	// Verifiys that the file was not already created and then creates the file
 	if (!bFileOpen) {
 		fsOpenFile.open(createFile, std::ios::out | std::ios::app);
@@ -122,11 +107,10 @@ bool FileMangement::fileExists(std::string& sFileName)
 }
 
 //access the file and feeds the information into high score.
-QMap<std::string, int> FileMangement::AccessFile(string sFileName)
+QMap<std::string, int> FileMangement::AccessFile()
 {
 
-    this->sFileName = sFileName;
-    openFile(this->sFileName);
+    openFile();
 
     QMap<std::string, int> mFile;
 	std::string sline;
@@ -145,7 +129,7 @@ QMap<std::string, int> FileMangement::AccessFile(string sFileName)
             mFile[sKey] = iValue;
 		}
 		fsOpenFile.close();
-        openFile(this->sFileName);
+        openFile();
 		//make sure that the map only has the highscores from the file
         while (getline(this->fsOpenFile, sline)) {
 			sKey = sline;
