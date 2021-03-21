@@ -12,7 +12,7 @@ HighScore::HighScore() :
     {
     this->iStoreScore = 0;
     this->fileAccessed = false;
-    this->sfileName = "highScroe.txt";
+    this->sfileName = "../hangman/highScroe.txt";
 
 }
 

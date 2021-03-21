@@ -62,6 +62,7 @@ void FileMangement::readFile(StringList& termsArray)
 void FileMangement::openFile()
 {
     if(fileExists(this->sFileName)) {
+        cout << sFileName << endl;
         this->bFileOpen = true;
         this->fsOpenFile.open(this->sFileName);
     }
@@ -122,10 +123,10 @@ QMap<std::string, int> FileMangement::AccessFile()
         while (getline(fsOpenFile, sline)) {
             cout << "testing while loop" << endl;
 			sKey = sline;
-            cout << sline << endl;
+            cout << sKey << endl;
 			getline(fsOpenFile, sline);
-            cout << sline << endl;
             iValue = stoi(sline);
+            cout << iValue << endl;
             mFile[sKey] = iValue;
 		}
 		fsOpenFile.close();

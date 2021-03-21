@@ -3,8 +3,8 @@
 #include <QPixmap>
 #include <QSplashScreen>
 #include <QTimer>
-#include "/hangman/FileMangement.h"
-#include "/hangman/StringList.h"
+#include "../hangman/FileMangement.h"
+#include "../hangman/StringList.h"
 #include <ctime>
 
 class SplashScreen

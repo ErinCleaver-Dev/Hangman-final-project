@@ -16,15 +16,13 @@ WordControler::~WordControler() {
 // sets the current term for the selected term to be guessed.
 void WordControler::setTerm(string sWord)
 {
+    // changed word controler to assign the default value using copy.
+    std::copy(sWord.begin(), sWord.end(), std::back_inserter(vCurrentWord));
+    vCurrentlyDisplayed = vCurrentWord;
+    // goes through a for loop to get the charchters for the words
+    std::for_each(vCurrentlyDisplayed.begin(), vCurrentlyDisplayed.end(), [](char &cValue){
+    cValue = '_';});
 
-	// goes through a for loop to get the charchters for the words
-	for  (char cValue : sWord)
-	{
-		//Adds the letters to the vector for the current word that was selected
-		vCurrentWord.push_back(cValue);
-		//Adds the letters to the vector for the current word that is being displayed
-		vCurrentlyDisplayed.push_back('_');
-	}
 
 }
 
@@ -34,7 +32,7 @@ string WordControler::displayKnowLetters()
 	string sTerm;
 	int iSize = vCurrentlyDisplayed.size();
 	// displays the currently know letters
-	for (int i = 0; i < iSize; i++) {
+    for (int i = 0; i < iSize; i++) {
 		sTerm += vCurrentlyDisplayed[i];
 		sTerm += " ";
 	}
