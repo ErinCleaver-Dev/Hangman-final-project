@@ -72,8 +72,8 @@ void WordControler::getGuess(char& cGuess, int& iValue)
 bool WordControler::runHangman()
 {
 	
-	
-	return vCurrentlyDisplayed == vCurrentWord;
+    // replaced the function
+    return std::equal(vCurrentWord.begin(), vCurrentWord.end(), vCurrentlyDisplayed.begin());
 	
 }
 
@@ -84,7 +84,7 @@ bool WordControler::getbWordupdate()
 
 void WordControler::clearOutWord()
 {
-	if (vCurrentlyDisplayed == vCurrentWord) {
+    if (std::equal(vCurrentWord.begin(), vCurrentWord.end(), vCurrentlyDisplayed.begin())) {
 		while (!vCurrentWord.empty()) {
 			vCurrentWord.pop_back();
 		}
