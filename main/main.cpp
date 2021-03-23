@@ -10,7 +10,9 @@ int main(int argc, char *argv[])
 
     QApplication a(argc, argv);
     MainWindow w;
-    SplashScreen splashScreen(w); // execution returns to parent form
+    SplashScreen splashScreen(w); // dispose on w.show
+    w.show();
 
+    a.setWindowIcon(QIcon(":/splashIcon.png"));
     return a.exec();
 }
