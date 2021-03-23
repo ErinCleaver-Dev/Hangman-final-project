@@ -36,7 +36,6 @@ private slots:
     void errorBox (string errorMessage);
 
 
-
     void on_bnGuess_clicked();
 
     void on_btGetHint_clicked();
@@ -46,6 +45,14 @@ private slots:
     void on_bnNewGame_clicked();
 
     void on_bnExit_clicked();
+
+    void on_actionMain_menu_triggered();
+
+    void on_actionHangman_triggered();
+
+    void on_actionHighscore_triggered();
+
+    void on_actionExit_triggered();
 
 private:
     Ui::MainWindow *ui;

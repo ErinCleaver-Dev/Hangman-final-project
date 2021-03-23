@@ -13,7 +13,7 @@ private:
     FileMangement fileMangmenet;
     StringList quotesList;
 public:
-    SplashScreen();
+    SplashScreen(const QObject&);
 };
 
 #endif // SPLASHSCREEN_H

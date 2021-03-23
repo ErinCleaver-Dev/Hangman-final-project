@@ -11,6 +11,7 @@ CONFIG += c++11
 SOURCES += \
     hangman/FileMangement.cpp \
     hangman/HighScore.cpp \
+    hangman/Hint.cpp \
     hangman/StringList.cpp \
     hangman/hangman.cpp \
     hangman/wordControler.cpp \
@@ -23,6 +24,7 @@ SOURCES += \
 HEADERS += \
     hangman/FileMangement.h \
     hangman/HighScore.h \
+    hangman/Hint.h \
     hangman/StringList.h \
     hangman/hangman.h \
     hangman/wordControler.h \
@@ -37,6 +39,10 @@ FORMS += \
 
 
 DISTFILES += \
-    hangman/highScroe.txt \
-    hangman/termsfile.txt \
-    mainwindow/quotes.txt
+    highScroe.txt \
+    quotes.txt \
+    splashIcon.png \
+    termsfile.txt
+
+RESOURCES += \
+    Images.qrc

@@ -860,7 +860,7 @@ border-radius: 3px;</string>
   </action>
   <action name="actionHangman">
    <property name="text">
-    <string>Hangman</string>
+    <string>New Game</string>
    </property>
   </action>
   <action name="actionHighscore">

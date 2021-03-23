@@ -7,7 +7,7 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow),
-      accessFile("termsfile.txt"),
+      accessFile(":/termsfile.txt"),
       termsFromFile(accessFile.countStrings())
 
 {
@@ -197,6 +197,26 @@ void MainWindow::on_bnNewGame_clicked()
 
 // exits the game
 void MainWindow::on_bnExit_clicked()
+{
+    QCoreApplication::quit();
+}
+
+void MainWindow::on_actionMain_menu_triggered()
+{
+    ui->stackedWidget->setCurrentIndex(0);
+}
+
+void MainWindow::on_actionHangman_triggered()
+{
+    ui->stackedWidget->setCurrentIndex(1);
+}
+
+void MainWindow::on_actionHighscore_triggered()
+{
+    ui->stackedWidget->setCurrentIndex(3);
+}
+
+void MainWindow::on_actionExit_triggered()
 {
     QCoreApplication::quit();
 }

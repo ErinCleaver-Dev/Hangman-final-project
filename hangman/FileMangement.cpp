@@ -16,6 +16,7 @@ int FileMangement::countStrings()
 	openFile();
 	int iValue = 0;
 
+
 	if (this->fsOpenFile.is_open()) {
 
 		while (std::getline(fsOpenFile, sCurrentTerm)) {
@@ -26,7 +27,9 @@ int FileMangement::countStrings()
 
 
 
-	}
+    } else {
+        cout << "File failed to open to supply count" << endl;
+    }
 
 	this->fsOpenFile.close();
 
@@ -49,7 +52,9 @@ void FileMangement::readFile(StringList& termsArray)
 			iValue ++;
 		}
 
-	}
+    } else {
+        cout << "String list failed to load terms" << endl;
+    }
 
 	this->fsOpenFile.close();
 
@@ -61,11 +66,11 @@ void FileMangement::readFile(StringList& termsArray)
 //Use to open files in gernal 
 void FileMangement::openFile()
 {
-    if(fileExists(this->sFileName)) {
-        cout << sFileName << endl;
-        this->bFileOpen = true;
-        this->fsOpenFile.open(this->sFileName);
-    }
+
+    cout << sFileName << endl;
+    this->bFileOpen = true;
+
+
 }
 
 //Use to create files
