@@ -46,3 +46,7 @@ DISTFILES += \
 
 RESOURCES += \
     Images.qrc
+
+VERSION = 1.0.0.0
+
+DEFINES += APPLICATION_VER=\\\"$$VERSION\\\"
