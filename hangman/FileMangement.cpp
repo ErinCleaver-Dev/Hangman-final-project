@@ -70,7 +70,6 @@ void FileMangement::openFile()
     fileManagement.setFileName(sFileName);
 
     if (    fileManagement.open(QIODevice::ReadOnly | QIODevice::Text)) {
-        cout << "Testing File managment" << endl;
         this->bFileOpen = true;
     } else {
         cout << "File failed to open." << endl;
