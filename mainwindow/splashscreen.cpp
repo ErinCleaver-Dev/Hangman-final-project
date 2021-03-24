@@ -13,7 +13,7 @@ SplashScreen::SplashScreen(QWidget& parent) :
     hangSplash->setWindowFlag(Qt::WindowStaysOnTopHint);
     hangSplash->show();
 
-   // get pseudorandom quote
+   /*// get pseudorandom quote
    QFile quotesFile(":/quotes.txt");
    if (!quotesFile.open(QIODevice::ReadOnly | QIODevice::Text))
        quote = "while (true) { bloodPressure += programming }; -Dave";
@@ -27,13 +27,16 @@ SplashScreen::SplashScreen(QWidget& parent) :
        }       
        if (quotesList.count() > 0)
        {
-           int upperBound = quotesList.length();
-           qint32 randIndex = generator.bounded(0, upperBound);
-           quote = quotesList[randIndex];
+
        }
    }
-   quotesFile.close();
+   quotesFile.close();*/
 
+    fileMangmenet.readFile(quotesList);
+
+    int upperBound = quotesList.getSize();
+    int randIndex = generator.bounded(0, upperBound);
+    quote =  QString::fromStdString(quotesList.getSelectedTerm(randIndex));
    // display required output. TODO: Eliminate manual threading.
    strMessage = "Application Ver: " + QString(APPLICATION_VER); // added a new DEFINES in .pro file.
 

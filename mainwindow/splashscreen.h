@@ -17,7 +17,7 @@ private:
     QRandomGenerator generator;
     QString strMessage;
     QString quote;
-    QStringList quotesList;
+    StringList quotesList;
 public:
     SplashScreen(QWidget&);
 };
