@@ -58,7 +58,7 @@ QSet<pair<int, string>> HighScore::displayHighScore() {
 void HighScore::accessHighScoreFile()
 {
       
-    fileAccessed = accessFile.fileExists(sfileName);
+    fileAccessed = accessFile.fileExists();
     if (fileAccessed ) {
       // siMapHighScore = accessFile.AccessFile(sfileName);
        cout << "testing access file: ";
