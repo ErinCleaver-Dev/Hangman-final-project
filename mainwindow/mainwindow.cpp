@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <QPalette>
 
 
 
@@ -15,6 +16,14 @@ MainWindow::MainWindow(QWidget *parent)
     ui->stackedWidget->setCurrentIndex(0);
     //hangman.createMap(gMap);
     hangman.accessHighScoreFile();
+
+
+   //Created a timer to call MyTimerSlot every minute
+      timer = new QTimer(this);
+
+      connect(timer, SIGNAL(timeout()),this, SLOT(MyTimerSlot()));
+
+      timer->start(60000);
 
 
 }
@@ -219,4 +228,24 @@ void MainWindow::on_actionHighscore_triggered()
 void MainWindow::on_actionExit_triggered()
 {
     QCoreApplication::quit();
+}
+//Calls the function to switch colors with timer of 1 minute
+void MainWindow::MyTimerSlot()
+{
+
+
+    if (iValCount1 == 0){
+         ui -> Hangman -> setStyleSheet("background-color: rgb(85, 72, 200);");
+         iValCount1++;
+    }
+    else if (iValCount1 == 1){
+         ui -> Hangman -> setStyleSheet("background-color: rgb(85, 143, 205);");
+         iValCount1++;
+    }
+    else{
+         ui -> Hangman -> setStyleSheet("background-color: rgb(110, 72, 237);");
+         iValCount1 *= 0;
+    }
+
+
 }

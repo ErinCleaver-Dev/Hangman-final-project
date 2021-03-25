@@ -7,6 +7,7 @@
 #include "../hangman/hangman.h"
 #include <QMessageBox>
 #include "../validation/validation.h"
+#include <QTimer>
 
 
 QT_BEGIN_NAMESPACE
@@ -20,6 +21,14 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    //Added Timer
+    QTimer *timer;
+    //Used to switch color of Hangman form
+    short unsigned iValCount1 = 0;
+
+//Call on timer to switch colors
+public slots:
+    void MyTimerSlot();
 
 private slots:
     void on_pushButton_clicked();
