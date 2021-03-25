@@ -60,6 +60,12 @@ border-radius: 3px;</string>
         <height>101</height>
        </rect>
       </property>
+      <property name="toolTip">
+       <string>Press here to start hanagman game</string>
+      </property>
+      <property name="toolTipDuration">
+       <number>1000</number>
+      </property>
       <property name="styleSheet">
        <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:0.966, stop:0.85 #CAF2FA, stop:0.99 #656B87);
 color: rgb(230, 225, 255);
@@ -84,6 +90,12 @@ border-radius: 25px;
         <height>101</height>
        </rect>
       </property>
+      <property name="toolTip">
+       <string>Press here to view highscore</string>
+      </property>
+      <property name="toolTipDuration">
+       <number>1000</number>
+      </property>
       <property name="styleSheet">
        <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:0.966, stop:0.85 #CAF2FA, stop:0.99 #656B87);
 color: rgb(230, 225, 255);
@@ -107,6 +119,12 @@ border-radius: 25px;
         <width>441</width>
         <height>101</height>
        </rect>
+      </property>
+      <property name="toolTip">
+       <string>Press here to exit the application </string>
+      </property>
+      <property name="toolTipDuration">
+       <number>1000</number>
       </property>
       <property name="styleSheet">
        <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:0.966, stop:0.85 #CAF2FA, stop:0.99 #656B87);
@@ -154,6 +172,12 @@ border-radius: 3px;</string>
         <width>181</width>
         <height>101</height>
        </rect>
+      </property>
+      <property name="toolTip">
+       <string>Press submit once you have filled out all of the fields to start the game.</string>
+      </property>
+      <property name="toolTipDuration">
+       <number>1000</number>
       </property>
       <property name="styleSheet">
        <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:0.966, stop:0.85 #CAF2FA, stop:0.99 #656B87);
@@ -225,6 +249,12 @@ border-radius: 3px;</string>
         <height>101</height>
        </rect>
       </property>
+      <property name="toolTip">
+       <string>Enter a number between 1 and 12</string>
+      </property>
+      <property name="toolTipDuration">
+       <number>1000</number>
+      </property>
       <property name="styleSheet">
        <string notr="true">background-color: rgb(231, 229, 240);
 font: 12pt &quot;MS Shell Dlg 2&quot;;
@@ -242,6 +272,12 @@ border-radius: 3px;</string>
         <width>331</width>
         <height>101</height>
        </rect>
+      </property>
+      <property name="toolTip">
+       <string>Enter your name here.</string>
+      </property>
+      <property name="toolTipDuration">
+       <number>1000</number>
       </property>
       <property name="styleSheet">
        <string notr="true">background-color: rgb(231, 229, 240);
@@ -264,6 +300,12 @@ border-radius: 3px;</string>
       <layout class="QVBoxLayout" name="RadioButtons">
        <item>
         <widget class="QRadioButton" name="rbLoadTermsFromFile">
+         <property name="toolTip">
+          <string>Loads the terms internally.</string>
+         </property>
+         <property name="toolTipDuration">
+          <number>1000</number>
+         </property>
          <property name="styleSheet">
           <string notr="true">background-color: rgb(231, 229, 240);
 font: 20pt &quot;MS Shell Dlg 2&quot;;
@@ -279,6 +321,12 @@ border-radius: 3px;</string>
        </item>
        <item>
         <widget class="QRadioButton" name="rbLoadTerms">
+         <property name="toolTip">
+          <string>Chose this option to load from file</string>
+         </property>
+         <property name="toolTipDuration">
+          <number>1000</number>
+         </property>
          <property name="styleSheet">
           <string notr="true">background-color: rgb(231, 229, 240);
 font: 20pt &quot;MS Shell Dlg 2&quot;;
@@ -390,6 +438,12 @@ border-radius: 3px;</string>
         <height>81</height>
        </rect>
       </property>
+      <property name="toolTip">
+       <string>Press the button once you have entered your guess</string>
+      </property>
+      <property name="toolTipDuration">
+       <number>1000</number>
+      </property>
       <property name="styleSheet">
        <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:0.966, stop:0.85 #CAF2FA, stop:0.99 #656B87);
 color: rgb(230, 225, 255);
@@ -500,6 +554,12 @@ border-radius: 3px;</string>
         <height>81</height>
        </rect>
       </property>
+      <property name="toolTip">
+       <string>Press the button to get a hint after you have guessed at lease one time.</string>
+      </property>
+      <property name="toolTipDuration">
+       <number>1000</number>
+      </property>
       <property name="styleSheet">
        <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:0.966, stop:0.85 #CAF2FA, stop:0.99 #656B87);
 color: rgb(230, 225, 255);
@@ -521,6 +581,12 @@ border-radius: 25px;
         <width>731</width>
         <height>101</height>
        </rect>
+      </property>
+      <property name="toolTip">
+       <string>Enter your Guess here</string>
+      </property>
+      <property name="toolTipDuration">
+       <number>1000</number>
       </property>
       <property name="styleSheet">
        <string notr="true">background-color: rgb(231, 229, 240);
@@ -578,6 +644,12 @@ border-radius: 25px;
         <width>691</width>
         <height>401</height>
        </size>
+      </property>
+      <property name="toolTip">
+       <string>Press this button to go back to the highscore page.</string>
+      </property>
+      <property name="toolTipDuration">
+       <number>1000</number>
       </property>
       <property name="styleSheet">
        <string notr="true">background-color: rgb(231, 229, 240);
@@ -719,6 +791,12 @@ border-radius: 3px;</string>
         <height>61</height>
        </rect>
       </property>
+      <property name="toolTip">
+       <string>Press this button to go back to the main menu</string>
+      </property>
+      <property name="toolTipDuration">
+       <number>1000</number>
+      </property>
       <property name="styleSheet">
        <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:0.966, stop:0.85 #CAF2FA, stop:0.99 #656B87);
 color: rgb(230, 225, 255);
@@ -741,6 +819,12 @@ border-radius: 25px;
         <height>61</height>
        </rect>
       </property>
+      <property name="toolTip">
+       <string>Press this button to start a new game</string>
+      </property>
+      <property name="toolTipDuration">
+       <number>1000</number>
+      </property>
       <property name="styleSheet">
        <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:0.966, stop:0.85 #CAF2FA, stop:0.99 #656B87);
 color: rgb(230, 225, 255);
@@ -762,6 +846,12 @@ border-radius: 25px;
         <width>281</width>
         <height>61</height>
        </rect>
+      </property>
+      <property name="toolTip">
+       <string>Press this button to exit the application</string>
+      </property>
+      <property name="toolTipDuration">
+       <number>1000</number>
       </property>
       <property name="styleSheet">
        <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:0.966, stop:0.85 #CAF2FA, stop:0.99 #656B87);
