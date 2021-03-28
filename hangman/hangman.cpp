@@ -7,6 +7,7 @@ Hangman::Hangman()
     this->iPointcounter = 0;
     this->sHint = "";
     this->sUserName ="";
+    this->bIncremented = false;
 }
 
 // Asks the user to give a username
@@ -26,6 +27,7 @@ void Hangman::setTerm(StringList& termsList, int & iPos) {
 
 void Hangman::startGame()
 {
+    bIncremented = false;
 	try {
         getCurrentTerm();
         cout << "Guess a letter for the word" << endl;
@@ -43,6 +45,7 @@ void Hangman::startGame()
                     sHint = wordControler.giveHint(this->iPos);
                 }
                 else {
+                    bIncremented = true;
                     iPointcounter++;
                 }
              }
@@ -93,6 +96,11 @@ string Hangman::getCurrentTerm() {
 // gets the value for hint.
 string Hangman::getHint() {
     return sHint;
+}
+
+// returns whether the score was updated after the previous guess.
+bool Hangman::scoreIncremented() {
+    return bIncremented;
 }
 
 // displays the high score to the user.  

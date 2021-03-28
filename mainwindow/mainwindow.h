@@ -42,8 +42,10 @@ private slots:
     void on_btHighScore_clicked();
 
     void on_bnBackToMain_2_clicked();
+
     void errorBox (string errorMessage);
 
+    void CorrectGuessBox();
 
     void on_bnGuess_clicked();
 

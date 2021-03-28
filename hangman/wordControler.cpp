@@ -63,10 +63,7 @@ void WordControler::getGuess(char& cGuess, int& iValue)
 				setbWordUpdated(true);
 			}
 		}
-	}
-
-	
-
+    }
 }
 
 bool WordControler::runHangman()
@@ -97,8 +94,6 @@ void WordControler::clearOutWord()
 // Gets the value of rather the wor has been updated.
 bool WordControler::getUpdate()
 {
-
-
 	return bWordUpdated;
 }
 
