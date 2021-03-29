@@ -38,6 +38,8 @@ private slots:
 
     //bool event(QEvent *e); // override event
 
+    void on_stack_changed();
+
     void on_pushButton_clicked();
 
     void on_btHangman_clicked();

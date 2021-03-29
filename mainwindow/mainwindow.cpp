@@ -3,14 +3,11 @@
 #include <QPalette>
 
 
-
-
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow),
       accessFile(":/termsfile.txt"),
       termsFromFile(accessFile.countStrings())
-
 {
     ui->setupUi(this);
     ui->stackedWidget->setCurrentIndex(0);
@@ -23,7 +20,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(playTimer, SIGNAL(timeout()), this, SLOT(PlayTimerSlot()));
 
     // set up event to monitor for selected widget changes
-
+    connect(ui->stackedWidget, SIGNAL(currentChanged(int)), this, SLOT(on_stack_changed()));
 
     //Created a timer to call MyTimerSlot every minute
     timer = new QTimer(this);
@@ -36,16 +33,17 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-// override event to trigger timer start TODO: Fix
-//bool MainWindow::event(QEvent* e) {
-//    if (e->type() == QEvent::ZOrderChange) {
-//        if (ui->Hangman->isTopLevel())
-//            playTimer->start(1000);
-//        else
-//            playTimer->stop();
-//    }
-//    return QWidget::event(e);
-//}
+// Play timer start/stop control. Tied to stackedWidget currentChanged signal.
+void MainWindow::on_stack_changed()
+{
+    bool bPlaying = ui->stackedWidget->currentIndex() == ui->stackedWidget->indexOf(ui->Hangman);
+    if (bPlaying)
+        playTimer->start(1000);
+    else {
+        playTimer->stop();
+        ui->lcdPlayTime->display(0);
+    }
+}
 
 // Exit the application
 void MainWindow::on_pushButton_clicked()
@@ -99,7 +97,6 @@ void MainWindow::on_bnSubmitName_clicked()
                 ui->txGuess->setText("");
                 ui->txGetName->setText("");
                 ui->stackedWidget->setCurrentIndex(2);
-                playTimer->start(1000); // emit a signal every second. Manually start/stop for now.
             } else {
                 errorBox("Please provide a value between 1 and 12");
             }
