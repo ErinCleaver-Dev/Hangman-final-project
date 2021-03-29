@@ -17,15 +17,18 @@ MainWindow::MainWindow(QWidget *parent)
     //hangman.createMap(gMap);
     hangman.accessHighScoreFile();
 
+    // time spent playing the game
+    playTimer = new QTimer(this);
+    playTimer->setTimerType(Qt::CoarseTimer);
+    connect(playTimer, SIGNAL(timeout()), this, SLOT(PlayTimerSlot()));
 
-   //Created a timer to call MyTimerSlot every minute
-      timer = new QTimer(this);
-
-      connect(timer, SIGNAL(timeout()),this, SLOT(MyTimerSlot()));
-
-      timer->start(60000);
+    // set up event to monitor for selected widget changes
 
 
+    //Created a timer to call MyTimerSlot every minute
+    timer = new QTimer(this);
+    connect(timer, SIGNAL(timeout()),this, SLOT(MyTimerSlot()));
+    timer->start(60000);
 }
 
 MainWindow::~MainWindow()
@@ -33,6 +36,16 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+// override event to trigger timer start TODO: Fix
+//bool MainWindow::event(QEvent* e) {
+//    if (e->type() == QEvent::ZOrderChange) {
+//        if (ui->Hangman->isTopLevel())
+//            playTimer->start(1000);
+//        else
+//            playTimer->stop();
+//    }
+//    return QWidget::event(e);
+//}
 
 // Exit the application
 void MainWindow::on_pushButton_clicked()
@@ -86,6 +99,7 @@ void MainWindow::on_bnSubmitName_clicked()
                 ui->txGuess->setText("");
                 ui->txGetName->setText("");
                 ui->stackedWidget->setCurrentIndex(2);
+                playTimer->start(1000); // emit a signal every second. Manually start/stop for now.
             } else {
                 errorBox("Please provide a value between 1 and 12");
             }
@@ -239,6 +253,12 @@ void MainWindow::on_actionHighscore_triggered()
 void MainWindow::on_actionExit_triggered()
 {
     QCoreApplication::quit();
+}
+// updates the LCD widget on the game window
+void MainWindow::PlayTimerSlot() {
+    int iVal = ui->lcdPlayTime->intValue();
+    iVal++;
+    ui->lcdPlayTime->display(iVal);
 }
 //Calls the function to switch colors with timer of 1 minute
 void MainWindow::MyTimerSlot()
