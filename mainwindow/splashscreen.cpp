@@ -13,34 +13,17 @@ SplashScreen::SplashScreen(QWidget& parent) :
     hangSplash->setWindowFlag(Qt::WindowStaysOnTopHint);
     hangSplash->show();
 
-   /*// get pseudorandom quote
-   QFile quotesFile(":/quotes.txt");
-   if (!quotesFile.open(QIODevice::ReadOnly | QIODevice::Text))
-       quote = "while (true) { bloodPressure += programming }; -Dave";
-   else
-   {
-       QTextStream input(&quotesFile);
-       while(!input.atEnd())
-       {
-           QString line = input.readLine();
-           quotesList.append(line);
-       }       
-       if (quotesList.count() > 0)
-       {
-
-       }
-   }
-   quotesFile.close();*/
-
     fileMangmenet.readFile(quotesList);
 
+    // Generate random quote
+    srand(time(0)); // seed
     int upperBound = quotesList.getSize();
-    int randIndex = generator.bounded(0, upperBound);
+    int randIndex = rand() % upperBound + 1;
     quote =  QString::fromStdString(quotesList.getSelectedTerm(randIndex));
+
    // display required output. TODO: Eliminate manual threading.
    strMessage = "Application Ver: " + QString(APPLICATION_VER); // added a new DEFINES in .pro file.
-
-   hangSplash->showMessage("CIS227 Assignment 8 - Hangman", Qt::AlignBottom);
+   hangSplash->showMessage("CIS227 Assignment 9 - Hangman", Qt::AlignBottom);
    QThread::msleep(1500);
    hangSplash->showMessage("Authors: Erin, Sandra, and Dave", Qt::AlignBottom);
    QThread::msleep(1500);
@@ -52,4 +35,3 @@ SplashScreen::SplashScreen(QWidget& parent) :
    // Wait for parent widget to show. No need to call individual slots.
    hangSplash->finish(&parent);
 }
-

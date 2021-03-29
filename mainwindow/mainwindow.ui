@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>802</width>
+    <height>638</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -462,7 +462,7 @@ border-radius: 25px;
      <widget class="QPushButton" name="bnBackToMain">
       <property name="geometry">
        <rect>
-        <x>590</x>
+        <x>560</x>
         <y>510</y>
         <width>211</width>
         <height>61</height>
@@ -508,7 +508,7 @@ border-radius: 3px;</string>
        <rect>
         <x>390</x>
         <y>420</y>
-        <width>381</width>
+        <width>401</width>
         <height>81</height>
        </rect>
       </property>
@@ -595,6 +595,41 @@ qproperty-alignment: AlignCenter;
 color: rgb(36, 40, 41);
 border: 2px solid black;
 border-radius: 3px;</string>
+      </property>
+     </widget>
+     <widget class="QLCDNumber" name="lcdPlayTime">
+      <property name="geometry">
+       <rect>
+        <x>200</x>
+        <y>520</y>
+        <width>181</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(0, 0, 0);
+color: rgb(17, 255, 0);</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblPlayTime">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>520</y>
+        <width>151</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(231, 229, 240);
+font: 20pt &quot;MS Shell Dlg 2&quot;;
+qproperty-alignment: AlignCenter;
+color: rgb(71, 113, 177);
+border: 2px solid black;
+border-radius: 3px;</string>
+      </property>
+      <property name="text">
+       <string>Play Time</string>
       </property>
      </widget>
     </widget>
@@ -917,7 +952,7 @@ border-radius: 3px;</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>802</width>
      <height>21</height>
     </rect>
    </property>

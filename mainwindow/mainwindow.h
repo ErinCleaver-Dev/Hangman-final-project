@@ -9,7 +9,6 @@
 #include "../validation/validation.h"
 #include <QTimer>
 
-
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -21,16 +20,26 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-    //Added Timer
+    //Added Timers
     QTimer *timer;
     //Used to switch color of Hangman form
     short unsigned iValCount1 = 0;
+
+    // timer for tracking play time
+    QTimer *playTimer;
+
 
 //Call on timer to switch colors
 public slots:
     void MyTimerSlot();
 
 private slots:
+    void PlayTimerSlot();
+
+    //bool event(QEvent *e); // override event
+
+    void on_stack_changed();
+
     void on_pushButton_clicked();
 
     void on_btHangman_clicked();
@@ -42,8 +51,10 @@ private slots:
     void on_btHighScore_clicked();
 
     void on_bnBackToMain_2_clicked();
+
     void errorBox (string errorMessage);
 
+    void CorrectGuessBox();
 
     void on_bnGuess_clicked();
 
