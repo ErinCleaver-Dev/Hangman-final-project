@@ -21,6 +21,7 @@ private:
     string sHint;
     string sGuess;
     string sCurrentTerm;
+    bool bIncremented;
 
 public:
 	// gets the map for the highscore
@@ -37,5 +38,6 @@ public:
     string getCurrentTerm ();
     string getHint();
     void setGuess(string& sGuest);
+    bool scoreIncremented();
 };
 

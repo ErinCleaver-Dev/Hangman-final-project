@@ -14,7 +14,6 @@ class SplashScreen
 private:
     QSplashScreen *hangSplash;
     FileMangement fileMangmenet;
-    QRandomGenerator generator;
     QString strMessage;
     QString quote;
     StringList quotesList;

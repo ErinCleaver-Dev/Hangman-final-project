@@ -19,6 +19,7 @@ MainWindow::MainWindow(QWidget *parent)
     playTimer = new QTimer(this);
     playTimer->setTimerType(Qt::CoarseTimer);
     connect(playTimer, SIGNAL(timeout()), this, SLOT(PlayTimerSlot()));
+<<<<<<< HEAD
 
     //timer used to change color every minute
     timer = new QTimer(this);
@@ -30,7 +31,16 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->stackedWidget, SIGNAL(currentChanged(int)), this, SLOT(on_stack_changed()));
 
 
+=======
 
+    // set up event to monitor for selected widget changes
+    connect(ui->stackedWidget, SIGNAL(currentChanged(int)), this, SLOT(on_stack_changed()));
+>>>>>>> d7995c63555d8096914b069d1dd6acd06c78cad8
+
+    //Created a timer to call MyTimerSlot every minute
+    timer = new QTimer(this);
+    connect(timer, SIGNAL(timeout()),this, SLOT(MyTimerSlot()));
+    timer->start(60000);
 }
 
 MainWindow::~MainWindow()

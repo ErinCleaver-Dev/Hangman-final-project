@@ -21,7 +21,6 @@ private:
 	ofstream newFile;
 	bool bFileOpen;
 	//checks to see if file is open
-	//checks to see if file is open
 	void openFile();
 
 
