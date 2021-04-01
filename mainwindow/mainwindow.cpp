@@ -34,10 +34,8 @@ MainWindow::MainWindow(QWidget *parent)
     // set up event to monitor for selected widget changes
     connect(ui->stackedWidget, SIGNAL(currentChanged(int)), this, SLOT(on_stack_changed()));
 
-    //Created a timer to call MyTimerSlot every minute
-    timer = new QTimer(this);
-    connect(timer, SIGNAL(timeout()),this, SLOT(MyTimerSlot()));
-    timer->start(60000);
+    
+    
 }
 
 MainWindow::~MainWindow()
