@@ -118,6 +118,7 @@ void MainWindow::on_bnSubmitName_clicked()
                 ui->lbGetUserName->setText(QString::fromStdString(sName));
                 ui->lbPoints->setText("0");
                 ui->lbIncorrect->setText("0");
+                ui->lbhint->setText("");
                 ui->lbKnowWord->setText(QString::fromStdString(hangman.getCurrentTerm()));
                 //makes sure that the fields are blank
                 ui->txGuess->setText("");
