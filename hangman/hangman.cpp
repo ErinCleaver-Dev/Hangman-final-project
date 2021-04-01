@@ -42,7 +42,7 @@ void Hangman::startGame()
                 if (!wordControler.getbWordupdate() && iIncorrectLetterCount <= 10) {
                     cout << "Letter not found" << endl;
                     iIncorrectLetterCount++;
-                    sHint = wordControler.giveHint(this->iPos);
+                    //sHint = wordControler.giveHint(this->iPos);
                 }
                 else {
                     bIncremented = true;
@@ -95,7 +95,7 @@ string Hangman::getCurrentTerm() {
 
 // gets the value for hint.
 string Hangman::getHint() {
-    return sHint;
+    return sHint = wordControler.giveHint(this -> iPos);
 }
 
 // returns whether the score was updated after the previous guess.
