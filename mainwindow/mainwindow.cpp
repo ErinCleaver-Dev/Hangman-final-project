@@ -6,7 +6,7 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow),
-      accessFile(":/termsfile.txt"),
+      accessFile(":/easy.txt"),
       termsFromFile(accessFile.countStrings())
 {
     ui->setupUi(this);
@@ -80,7 +80,7 @@ void MainWindow::on_bnSubmitName_clicked()
 {
 
     // A if statement to check to makeing sure that the user provided all of the information
-    if((ui->rbLoadTerms->isCheckable() || ui->rbLoadTermsFromFile->isCheckable()) && !ui->txGetName->text().isEmpty() && !ui->txGetNumber->text().isEmpty()) {
+    if(!ui->txGetName->text().isEmpty() && !ui->txGetNumber->text().isEmpty()) {
         string sNumber;
         string sName;
         sNumber = ui->txGetNumber->text().toStdString();
@@ -91,12 +91,20 @@ void MainWindow::on_bnSubmitName_clicked()
             // makes sure it is between 1 and 12.
             if(iFirstValue > 0 && iFirstValue <= 12) {
                 //Checks to make sure that  option was clicked.
-                if(ui->rbLoadTerms->isCheckable()) {
+                if(ui->rbMixed->isChecked()) {
                     iFirstValue-=1;
                     hangman.setTerm(termslist, iFirstValue);
                 }
                 //Checks to make sure that  option was clicked.
-                else if(ui->rbLoadTermsFromFile->isCheckable()) {
+                else if(ui->rbEasy->isChecked()) {
+                    accessFile.readFile(termsFromFile);
+                    hangman.setTerm(termsFromFile, iFirstValue);
+                } else if(ui->rbMedium->isChecked()) {
+                    accessFile.setFileName(":/medium.txt");
+                    accessFile.readFile(termsFromFile);
+                    hangman.setTerm(termsFromFile, iFirstValue);
+                } else if(ui->rbHard->isChecked()) {
+                    accessFile.setFileName(":/hard.txt");
                     accessFile.readFile(termsFromFile);
                     hangman.setTerm(termsFromFile, iFirstValue);
                 }
@@ -135,7 +143,11 @@ void MainWindow::on_bnBackToMain_clicked()
 void MainWindow::on_btHighScore_clicked()
 {
     // was made to map the file information to the table, currently is not working.
-    QSet<pair<int, string>> setHighScore= hangman.displayHighScore();
+    QList<pair<int, string>> setHighScore= hangman.displayHighScore().values();
+
+    //Adding the sort algorthim for displaying high scores.
+    std::sort(setHighScore.begin(), setHighScore.end());
+    std::reverse(setHighScore.begin(), setHighScore.end());
     int c =0;
     int r=0;
     for(auto const& setPair : setHighScore) {

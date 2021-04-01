@@ -3,6 +3,8 @@
         <file>splashIcon.png</file>
         <file>highScroe.txt</file>
         <file>quotes.txt</file>
-        <file>termsfile.txt</file>
+        <file>easy.txt</file>
+        <file>hard.txt</file>
+        <file>medium.txt</file>
     </qresource>
 </RCC>

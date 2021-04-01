@@ -61,8 +61,10 @@ void FileMangement::readFile(StringList& termsArray)
 
 }
 
-//Use to open files in gernal 
-
+//Used to update the file name.
+void FileMangement::setFileName(QString sFileName) {
+    this->sFileName = sFileName;
+}
 
 //Use to open files in gernal 
 void FileMangement::openFile()
@@ -86,12 +88,13 @@ void FileMangement::createFile(std::string& createFile)
 }
 
 //Used to modifiy existing files by getting the map for high score and the the file name.
-void FileMangement::updateFile(std::string& openFile, QMap<std::string, int>& mValue)
+void FileMangement::updateFile(QMap<std::string, int>& mValue)
 {
 	//checks to make sure hte file is open
-    QTextStream input(&fileManagement);
+
 
     if (fileManagement.open(QFile::WriteOnly | QFile::Text)) {
+        QTextStream input(&fileManagement);
 		//getts the information from the map and places it in the file.
         for (QMap<string, int>::iterator mFile = mValue.begin(); mFile != mValue.end(); ++mFile) {
             QString sTemp = QString::fromStdString(mFile.key()) + "\n" + QString::number(mFile.value())  + "\n";

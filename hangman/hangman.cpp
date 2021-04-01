@@ -19,6 +19,7 @@ string Hangman::getName() {
 
 // sets the current term
 void Hangman::setTerm(StringList& termsList, int & iPos) {
+
     this->iPos = iPos;
     wordControler.setTerm(termsList.getSelectedTerm(this->iPos));
     iPointcounter = 0;
@@ -39,6 +40,8 @@ void Hangman::startGame()
                 //gets the guest from the user.
                 wordControler.getGuess(cValue);
                 //checks to see how many times the user has guested the word
+
+
                 if (!wordControler.getbWordupdate() && iIncorrectLetterCount <= 10) {
                     cout << "Letter not found" << endl;
                     iIncorrectLetterCount++;

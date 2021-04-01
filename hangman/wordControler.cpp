@@ -16,6 +16,7 @@ WordControler::~WordControler() {
 // sets the current term for the selected term to be guessed.
 void WordControler::setTerm(string sWord)
 {
+
     // changed word controler to assign the default value using copy.
     std::copy(sWord.begin(), sWord.end(), std::back_inserter(vCurrentWord));
     vCurrentlyDisplayed = vCurrentWord;
@@ -37,7 +38,7 @@ string WordControler::displayKnowLetters()
 		sTerm += " ";
 	}
 	
-
+    setbWordUpdated(false);
     return sTerm;
 }
 
@@ -48,23 +49,30 @@ void WordControler::getGuess(char& cGuess, int& iValue)
 {
 	
 	iValue -= iValue;
-	setbWordUpdated(false);
 
 
 	// Make sure that the value is within range for values
 	if (iValue < vCurrentlyDisplayed.size() && iValue >= 0) {
 		//Checks to make sure the letter is found in the current word
-		if (vCurrentWord[iValue] == cGuess) {
-			//Checks to see if the value is not already in the display word
-			if (vCurrentlyDisplayed[iValue] != cGuess) {
-				// Adds the value to the guess
-				updateCurrentlyDisplayed(cGuess, iValue);
-				// Becomes true if the value is updated.
-				setbWordUpdated(true);
-			}
-		}
+
+
+        if (vCurrentWord[iValue] == cGuess) {
+
+        //Checks to see if the value is not already in the display word
+        if (vCurrentlyDisplayed[iValue] != cGuess) {
+            // Adds the value to the guess
+            updateCurrentlyDisplayed(cGuess, iValue);
+            // Becomes true if the value is updated.
+            setbWordUpdated(true);
+        } else if (vCurrentWord[iValue] == vCurrentlyDisplayed[iValue]) {
+            setbWordUpdated(true);
+        } else {
+
+        }
+    }
     }
 }
+
 
 bool WordControler::runHangman()
 {

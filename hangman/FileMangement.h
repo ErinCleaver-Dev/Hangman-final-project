@@ -37,9 +37,13 @@ public:
 	//Use to create files
 	void createFile(std::string& createFile);
 
+    //Used to update the file name.
+    void setFileName(QString sFileName);
+
+
 	//Used to modifiy existing files by getting the map for 
 	//high score and the the file name.
-    void updateFile(std::string&, QMap<string, int>&);
+    void updateFile(QMap<string, int>&);
     bool fileExists();
 
 	//access the file and feeds the information into high score.

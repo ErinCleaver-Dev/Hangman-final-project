@@ -51,6 +51,10 @@ QSet<pair<int, string>> HighScore::displayHighScore() {
     {
         setHighScore.insert(pair(mIT.value(), mIT.key()));
     }
+
+
+
+
     return setHighScore;
 }
 
@@ -87,5 +91,5 @@ void HighScore::updateHighScore(string& name, int& iScore)
 
 //used to update the file information.
 void HighScore::updateFile() {
-     accessFile.updateFile(sfileName, siMapHighScore);
+     accessFile.updateFile(siMapHighScore);
 }

@@ -147,7 +147,7 @@ border-radius: 25px;
       <property name="geometry">
        <rect>
         <x>40</x>
-        <y>370</y>
+        <y>470</y>
         <width>141</width>
         <height>101</height>
        </rect>
@@ -168,7 +168,7 @@ border-radius: 3px;</string>
       <property name="geometry">
        <rect>
         <x>610</x>
-        <y>370</y>
+        <y>470</y>
         <width>181</width>
         <height>101</height>
        </rect>
@@ -198,7 +198,7 @@ border-radius: 25px;
       <property name="geometry">
        <rect>
         <x>40</x>
-        <y>260</y>
+        <y>350</y>
         <width>141</width>
         <height>91</height>
        </rect>
@@ -243,8 +243,8 @@ border-radius: 3px;</string>
      <widget class="QLineEdit" name="txGetNumber">
       <property name="geometry">
        <rect>
-        <x>232</x>
-        <y>259</y>
+        <x>220</x>
+        <y>350</y>
         <width>331</width>
         <height>101</height>
        </rect>
@@ -267,8 +267,8 @@ border-radius: 3px;</string>
      <widget class="QLineEdit" name="txGetName">
       <property name="geometry">
        <rect>
-        <x>230</x>
-        <y>370</y>
+        <x>220</x>
+        <y>470</y>
         <width>331</width>
         <height>101</height>
        </rect>
@@ -288,59 +288,105 @@ border: 2px solid black;
 border-radius: 3px;</string>
       </property>
      </widget>
-     <widget class="QWidget" name="layoutWidget">
+     <widget class="QGroupBox" name="RadioButtons">
       <property name="geometry">
        <rect>
-        <x>230</x>
-        <y>150</y>
+        <x>220</x>
+        <y>120</y>
         <width>331</width>
-        <height>101</height>
+        <height>211</height>
        </rect>
       </property>
-      <layout class="QVBoxLayout" name="RadioButtons">
-       <item>
-        <widget class="QRadioButton" name="rbLoadTermsFromFile">
-         <property name="toolTip">
-          <string>Loads the terms internally.</string>
-         </property>
-         <property name="toolTipDuration">
-          <number>1000</number>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">background-color: rgb(231, 229, 240);
-font: 20pt &quot;MS Shell Dlg 2&quot;;
+      <property name="title">
+       <string/>
+      </property>
+      <widget class="QRadioButton" name="rbEasy">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>10</y>
+         <width>311</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(231, 229, 240);
+font: 12pt &quot;MS Shell Dlg 2&quot;;
 qproperty-alignment: AlignCenter;
 color: rgb(71, 113, 177);
 border: 2px solid black;
 border-radius: 3px;</string>
-         </property>
-         <property name="text">
-          <string>Load Terms from File</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QRadioButton" name="rbLoadTerms">
-         <property name="toolTip">
-          <string>Chose this option to load from file</string>
-         </property>
-         <property name="toolTipDuration">
-          <number>1000</number>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">background-color: rgb(231, 229, 240);
-font: 20pt &quot;MS Shell Dlg 2&quot;;
+       </property>
+       <property name="text">
+        <string>Easy</string>
+       </property>
+      </widget>
+      <widget class="QRadioButton" name="rbMedium">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>60</y>
+         <width>311</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(231, 229, 240);
+font: 12pt &quot;MS Shell Dlg 2&quot;;
 qproperty-alignment: AlignCenter;
 color: rgb(71, 113, 177);
 border: 2px solid black;
 border-radius: 3px;</string>
-         </property>
-         <property name="text">
-          <string>Load Terms</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
+       </property>
+       <property name="text">
+        <string>Medium</string>
+       </property>
+      </widget>
+      <widget class="QRadioButton" name="rbHard">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>110</y>
+         <width>311</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(231, 229, 240);
+font: 12pt &quot;MS Shell Dlg 2&quot;;
+qproperty-alignment: AlignCenter;
+color: rgb(71, 113, 177);
+border: 2px solid black;
+border-radius: 3px;</string>
+       </property>
+       <property name="text">
+        <string>Hard</string>
+       </property>
+      </widget>
+      <widget class="QRadioButton" name="rbMixed">
+       <property name="geometry">
+        <rect>
+         <x>11</x>
+         <y>156</y>
+         <width>311</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(231, 229, 240);
+font: 12pt &quot;MS Shell Dlg 2&quot;;
+qproperty-alignment: AlignCenter;
+color: rgb(71, 113, 177);
+border: 2px solid black;
+border-radius: 3px;</string>
+       </property>
+       <property name="text">
+        <string>Mixed</string>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
+      </widget>
      </widget>
     </widget>
     <widget class="QWidget" name="Hangman">
