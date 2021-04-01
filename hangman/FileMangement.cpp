@@ -91,7 +91,7 @@ void FileMangement::createFile(std::string& createFile)
 void FileMangement::updateFile(QMap<std::string, int>& mValue)
 {
 	//checks to make sure hte file is open
-
+    fileManagement.setFileName(sFileName);
 
     if (fileManagement.open(QFile::WriteOnly | QFile::Text)) {
         QTextStream input(&fileManagement);
@@ -102,7 +102,7 @@ void FileMangement::updateFile(QMap<std::string, int>& mValue)
 		}
 	}
 
-	newFile.close();
+    fileManagement.close();
 }
 
 //used to check to see if the file exists 
