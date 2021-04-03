@@ -1,27 +1,69 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-
-
+#include <QPalette>
 
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow),
-      accessFile("termsfile.txt"),
+      accessFile(":/easy.txt"),
       termsFromFile(accessFile.countStrings())
 
 {
     ui->setupUi(this);
     ui->stackedWidget->setCurrentIndex(0);
+   // ui-stackedW
     //hangman.createMap(gMap);
     hangman.accessHighScoreFile();
 
 
+    // time spent playing the game
+    playTimer = new QTimer(this);
+    playTimer->setTimerType(Qt::CoarseTimer);
+    connect(playTimer, SIGNAL(timeout()), this, SLOT(PlayTimerSlot()));
+
+    //timer used to change color every minute
+    timer = new QTimer(this);
+    timer->setTimerType(Qt::CoarseTimer);
+    connect(timer, SIGNAL(timeout()),this, SLOT(MyTimerSlot()));
+
+
+    // set up event to monitor for selected widget changes
+    connect(ui->stackedWidget, SIGNAL(currentChanged(int)), this, SLOT(on_stack_changed()));
+
+
+
+    // set up event to monitor for selected widget changes
+    connect(ui->stackedWidget, SIGNAL(currentChanged(int)), this, SLOT(on_stack_changed()));
+
+    //connect to window form and change color with signal
+    connect(&options, SIGNAL(getTheColor(short int)),this, SLOT(getColors(short int)));
+
+
+
+    
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+// Play timer start/stop control. Tied to stackedWidget currentChanged signal.
+void MainWindow::on_stack_changed()
+{
+    bool bPlaying = ui->stackedWidget->currentIndex() == ui->stackedWidget->indexOf(ui->Hangman);
+    if (bPlaying){
+        playTimer->start(1000);
+        timer->start(60000);
+    }
+    else {
+        playTimer->stop();
+        timer->stop();
+        ui->lcdPlayTime->display(0);
+        ui -> Hangman -> setStyleSheet("background-color: rgb(37, 41, 109);");
+
+    }
 }
 
 
@@ -42,7 +84,7 @@ void MainWindow::on_bnSubmitName_clicked()
 {
 
     // A if statement to check to makeing sure that the user provided all of the information
-    if((ui->rbLoadTerms->isCheckable() || ui->rbLoadTermsFromFile->isCheckable()) && !ui->txGetName->text().isEmpty() && !ui->txGetNumber->text().isEmpty()) {
+    if(!ui->txGetName->text().isEmpty() && !ui->txGetNumber->text().isEmpty()) {
         string sNumber;
         string sName;
         sNumber = ui->txGetNumber->text().toStdString();
@@ -53,12 +95,20 @@ void MainWindow::on_bnSubmitName_clicked()
             // makes sure it is between 1 and 12.
             if(iFirstValue > 0 && iFirstValue <= 12) {
                 //Checks to make sure that  option was clicked.
-                if(ui->rbLoadTerms->isCheckable()) {
+                if(ui->rbMixed->isChecked()) {
                     iFirstValue-=1;
                     hangman.setTerm(termslist, iFirstValue);
                 }
                 //Checks to make sure that  option was clicked.
-                else if(ui->rbLoadTermsFromFile->isCheckable()) {
+                else if(ui->rbEasy->isChecked()) {
+                    accessFile.readFile(termsFromFile);
+                    hangman.setTerm(termsFromFile, iFirstValue);
+                } else if(ui->rbMedium->isChecked()) {
+                    accessFile.setFileName(":/medium.txt");
+                    accessFile.readFile(termsFromFile);
+                    hangman.setTerm(termsFromFile, iFirstValue);
+                } else if(ui->rbHard->isChecked()) {
+                    accessFile.setFileName(":/hard.txt");
                     accessFile.readFile(termsFromFile);
                     hangman.setTerm(termsFromFile, iFirstValue);
                 }
@@ -72,6 +122,7 @@ void MainWindow::on_bnSubmitName_clicked()
                 ui->lbGetUserName->setText(QString::fromStdString(sName));
                 ui->lbPoints->setText("0");
                 ui->lbIncorrect->setText("0");
+                ui->lbhint->setText("");
                 ui->lbKnowWord->setText(QString::fromStdString(hangman.getCurrentTerm()));
                 //makes sure that the fields are blank
                 ui->txGuess->setText("");
@@ -97,7 +148,11 @@ void MainWindow::on_bnBackToMain_clicked()
 void MainWindow::on_btHighScore_clicked()
 {
     // was made to map the file information to the table, currently is not working.
-    QSet<pair<int, string>> setHighScore= hangman.displayHighScore();
+    QList<pair<int, string>> setHighScore= hangman.displayHighScore().values();
+
+    //Adding the sort algorthim for displaying high scores.
+    std::sort(setHighScore.begin(), setHighScore.end());
+    std::reverse(setHighScore.begin(), setHighScore.end());
     int c =0;
     int r=0;
     for(auto const& setPair : setHighScore) {
@@ -137,6 +192,14 @@ void MainWindow::errorBox(string errorMessage) {
     errorBox.exec();
 }
 
+void MainWindow::CorrectGuessBox() {
+    QMessageBox correctBox;
+    correctBox.setWindowTitle("Congrats!");
+    correctBox.setText("Your guess was correct!");
+    correctBox.addButton("I rock!", QMessageBox::YesRole);
+    correctBox.exec();
+}
+
 //Function used for getting guess from the user
 void MainWindow::on_bnGuess_clicked()
 {
@@ -154,6 +217,9 @@ void MainWindow::on_bnGuess_clicked()
         ui->lbKnowWord->setText(QString::fromStdString(hangman.getCurrentTerm()));
         ui->lbPoints->setText(QString::fromStdString(hangman.getCurrentPoints()));
         ui->lbIncorrect->setText(QString::fromStdString(hangman.getIncorrectLetters()));
+
+        // TODO: Implement settings file to turn this off if the user wants to.
+        if(hangman.scoreIncremented()) { CorrectGuessBox(); }
 
         // Checks to see if the user has won
         if(stoi(hangman.getCurrentPoints()) > 10) {
@@ -199,4 +265,77 @@ void MainWindow::on_bnNewGame_clicked()
 void MainWindow::on_bnExit_clicked()
 {
     QCoreApplication::quit();
+}
+
+void MainWindow::on_actionMain_menu_triggered()
+{
+    ui->stackedWidget->setCurrentIndex(0);
+}
+
+void MainWindow::on_actionHangman_triggered()
+{
+    ui->stackedWidget->setCurrentIndex(1);
+}
+
+void MainWindow::on_actionHighscore_triggered()
+{
+    ui->stackedWidget->setCurrentIndex(3);
+}
+
+void MainWindow::on_actionExit_triggered()
+{
+    QCoreApplication::quit();
+}
+// updates the LCD widget on the game window
+void MainWindow::PlayTimerSlot() {
+    int iVal = ui->lcdPlayTime->intValue();
+    iVal++;
+    ui->lcdPlayTime->display(iVal);
+}
+//Calls the function to switch colors with timer of 1 minute
+void MainWindow::MyTimerSlot()
+{
+
+
+    if (iValCount1 == 0){
+         ui -> Hangman -> setStyleSheet("background-color: rgb(85, 72, 200);");
+         iValCount1++;
+    }
+    else if (iValCount1 == 1){
+         ui -> Hangman -> setStyleSheet("background-color: rgb(85, 143, 205);");
+         iValCount1++;
+    }
+    else{
+         ui -> Hangman -> setStyleSheet("background-color: rgb(110, 72, 237);");
+         iValCount1 *= 0;
+    }
+
+
+}
+//Go to Edit terms page
+void MainWindow::on_btnChangeTerms_clicked()
+{
+        changeterms.show();
+        //close();
+}
+
+void MainWindow::on_btnOptions_clicked()
+{
+    options.show();
+   // hide();
+
+}
+//change background on user demand
+void MainWindow::getColors(short int iColor )
+{
+    if(iColor == 0){
+    ui->stackedWidget->setStyleSheet("background-color: rgb(37, 41, 109);");
+    }
+    else if (iColor == 1){
+        ui->stackedWidget->setStyleSheet("background-color: rgb(139,0,139);");
+    }
+    else if (iColor == 2){
+        ui->stackedWidget->setStyleSheet("background-color: rgb(0, 0, 0);");
+    }
+
 }

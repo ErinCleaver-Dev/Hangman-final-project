@@ -8,7 +8,7 @@ using namespace std;
 
 //assigns values to the variables 
 HighScore::HighScore() :
-    accessFile("highScroe.txt")
+    accessFile(":/highScroe.txt")
     {
     this->iStoreScore = 0;
     this->fileAccessed = false;
@@ -51,6 +51,10 @@ QSet<pair<int, string>> HighScore::displayHighScore() {
     {
         setHighScore.insert(pair(mIT.value(), mIT.key()));
     }
+
+
+
+
     return setHighScore;
 }
 
@@ -58,7 +62,7 @@ QSet<pair<int, string>> HighScore::displayHighScore() {
 void HighScore::accessHighScoreFile()
 {
       
-    fileAccessed = accessFile.fileExists(sfileName);
+    fileAccessed = accessFile.fileExists();
     if (fileAccessed ) {
       // siMapHighScore = accessFile.AccessFile(sfileName);
        cout << "testing access file: ";
@@ -87,5 +91,5 @@ void HighScore::updateHighScore(string& name, int& iScore)
 
 //used to update the file information.
 void HighScore::updateFile() {
-     accessFile.updateFile(sfileName, siMapHighScore);
+     accessFile.updateFile(siMapHighScore);
 }

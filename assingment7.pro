@@ -9,34 +9,50 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    changeterms.cpp \
     hangman/FileMangement.cpp \
     hangman/HighScore.cpp \
+    hangman/Hint.cpp \
     hangman/StringList.cpp \
     hangman/hangman.cpp \
     hangman/wordControler.cpp \
     main/main.cpp \
     mainwindow/mainwindow.cpp \
     mainwindow/splashscreen.cpp \
+    options.cpp \
     validation/validation.cpp
 
 
 HEADERS += \
+    changeterms.h \
     hangman/FileMangement.h \
     hangman/HighScore.h \
+    hangman/Hint.h \
     hangman/StringList.h \
     hangman/hangman.h \
     hangman/wordControler.h \
     mainwindow/mainwindow.h \
     mainwindow/splashscreen.h \
+    options.h \
     validation/validation.h
 
 
 FORMS += \
-    mainwindow/mainwindow.ui
+    changeterms.ui \
+    mainwindow/mainwindow.ui \
+    options.ui
 
 
 
 DISTFILES += \
-    hangman/highScroe.txt \
-    hangman/termsfile.txt \
-    mainwindow/quotes.txt
+    highScroe.txt \
+    quotes.txt \
+    splashIcon.png \
+    termsfile.txt
+
+RESOURCES += \
+    Images.qrc
+
+VERSION = 1.0.0.0
+
+DEFINES += APPLICATION_VER=\\\"$$VERSION\\\"

@@ -1,0 +1,12 @@
+home
+tiger
+ant
+apple
+an
+at
+cat
+bat
+boss
+demo
+hock
+book

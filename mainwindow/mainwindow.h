@@ -7,7 +7,10 @@
 #include "../hangman/hangman.h"
 #include <QMessageBox>
 #include "../validation/validation.h"
-
+#include <QTimer>
+#include <algorithm>
+#include "changeterms.h"
+#include "options.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -20,8 +23,32 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    //Added Timers
+    QTimer *timer;
+    //Used to switch color of Hangman form
+    short unsigned iValCount1 = 0;
+
+    // timer for tracking play time
+    QTimer *playTimer;
+
+
+
+
+
+public slots:
+      void getColors(short int);
+
+
 
 private slots:
+    //Call on timer to switch colors
+    void PlayTimerSlot();
+
+    void MyTimerSlot();
+    //bool event(QEvent *e); // override event
+
+    void on_stack_changed();
+
     void on_pushButton_clicked();
 
     void on_btHangman_clicked();
@@ -33,9 +60,10 @@ private slots:
     void on_btHighScore_clicked();
 
     void on_bnBackToMain_2_clicked();
+
     void errorBox (string errorMessage);
 
-
+    void CorrectGuessBox();
 
     void on_bnGuess_clicked();
 
@@ -46,6 +74,20 @@ private slots:
     void on_bnNewGame_clicked();
 
     void on_bnExit_clicked();
+
+    void on_actionMain_menu_triggered();
+
+    void on_actionHangman_triggered();
+
+    void on_actionHighscore_triggered();
+
+    void on_actionExit_triggered();
+
+    void on_btnChangeTerms_clicked();
+
+    void on_btnOptions_clicked();
+
+
 
 private:
     Ui::MainWindow *ui;
@@ -58,5 +100,7 @@ private:
     int iFirstValue;
     Validation validation;
     HighScore highscore;
+    ChangeTerms changeterms;
+    Options options;
 };
 #endif // MAINWINDOW_H

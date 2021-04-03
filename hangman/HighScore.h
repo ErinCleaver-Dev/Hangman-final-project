@@ -7,6 +7,7 @@
 #include <QMap>
 #include "FileMangement.h"
 #include <QSet>
+#include <QtAlgorithms>
 using namespace std;
 
 

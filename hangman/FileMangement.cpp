@@ -5,9 +5,10 @@
 
 //A override that assigns the name of the file.
 //used when a file name is provided.
-FileMangement::FileMangement(std::string sFileName)
+FileMangement::FileMangement(QString sFileName)
 {
 	this->sFileName = sFileName;
+
 }
 
 //counts number of words in the file
@@ -15,20 +16,20 @@ int FileMangement::countStrings()
 {
 	openFile();
 	int iValue = 0;
+    QTextStream input(&fileManagement);
 
-	if (this->fsOpenFile.is_open()) {
+    if (bFileOpen) {
 
-		while (std::getline(fsOpenFile, sCurrentTerm)) {
-			
+        while(!input.atEnd()){
+            input.readLine();
 			iValue++;
 
 		}
+    } else {
+        cout << "File failed to open to supply count" << endl;
+    }
 
-
-
-	}
-
-	this->fsOpenFile.close();
+	this->fileManagement.close();
 
 	return iValue;
 }
@@ -41,30 +42,39 @@ void FileMangement::readFile(StringList& termsArray)
 	openFile();
 	
 	int iValue = 0;
+    QTextStream input(&fileManagement);
+    QString sTemp = "";
+    if (!input.atEnd()) {
 
-	if (this->fsOpenFile.is_open()) {
-
-		while (std::getline(fsOpenFile, sCurrentTerm)) {
-			termsArray.setTerms(iValue, sCurrentTerm);
+        while (!input.atEnd()) {
+            QString sTemp = input.readLine();
+            sCurrentTerm = sTemp.toStdString();
+            termsArray.setTerms(iValue, sCurrentTerm);
 			iValue ++;
 		}
 
-	}
+    } else {
+        cout << "String list failed to load terms" << endl;
+    }
 
-	this->fsOpenFile.close();
+	this->fileManagement.close();
 
 }
 
-//Use to open files in gernal 
-
+//Used to update the file name.
+void FileMangement::setFileName(QString sFileName) {
+    this->sFileName = sFileName;
+}
 
 //Use to open files in gernal 
 void FileMangement::openFile()
 {
-    if(fileExists(this->sFileName)) {
-        cout << sFileName << endl;
+    fileManagement.setFileName(sFileName);
+
+    if (    fileManagement.open(QIODevice::ReadOnly | QIODevice::Text)) {
         this->bFileOpen = true;
-        this->fsOpenFile.open(this->sFileName);
+    } else {
+        cout << "File failed to open." << endl;
     }
 }
 
@@ -74,21 +84,21 @@ void FileMangement::createFile(std::string& createFile)
     openFile();
 	// Verifiys that the file was not already created and then creates the file
 	if (!bFileOpen) {
-		fsOpenFile.open(createFile, std::ios::out | std::ios::app);
-		fsOpenFile.close();
 	}
 }
 
 //Used to modifiy existing files by getting the map for high score and the the file name.
-void FileMangement::updateFile(std::string& openFile, QMap<std::string, int>& mValue)
+void FileMangement::updateFile(QMap<std::string, int>& mValue)
 {
-    newFile.open(openFile, std::ios::out | ios::app);
 	//checks to make sure hte file is open
-	if (newFile.good()) {
+
+
+    if (fileManagement.open(QFile::WriteOnly | QFile::Text)) {
+        QTextStream input(&fileManagement);
 		//getts the information from the map and places it in the file.
         for (QMap<string, int>::iterator mFile = mValue.begin(); mFile != mValue.end(); ++mFile) {
-
-            newFile <<  mFile.key() << "\n" << mFile.value() << "\n";
+            QString sTemp = QString::fromStdString(mFile.key()) + "\n" + QString::number(mFile.value())  + "\n";
+            input << sTemp;
 		}
 	}
 
@@ -96,14 +106,13 @@ void FileMangement::updateFile(std::string& openFile, QMap<std::string, int>& mV
 }
 
 //used to check to see if the file exists 
-bool FileMangement::fileExists(std::string& sFileName)
+bool FileMangement::fileExists()
 {
-    this->sFileName = sFileName;
-    this->fsOpenFile.open(sFileName);
-	if (this->fsOpenFile.is_open()) {
+    openFile();
+    if (fileManagement.open(QIODevice::ReadOnly | QIODevice::Text)) {
 		bFileOpen = true;
 	}
-	fsOpenFile.close();
+	fileManagement.close();
 	return bFileOpen;
 }
 
@@ -112,37 +121,33 @@ QMap<std::string, int> FileMangement::AccessFile()
 {
 
     openFile();
+    QTextStream input(&fileManagement);
 
     QMap<std::string, int> mFile;
 	std::string sline;
 	std::string sKey;
 	int iValue;
     if (bFileOpen){
-        cout << sFileName << endl;
         //gets the information from the file
-        while (getline(fsOpenFile, sline)) {
-            cout << "testing while loop" << endl;
-			sKey = sline;
-            cout << sKey << endl;
-			getline(fsOpenFile, sline);
-            iValue = stoi(sline);
-            cout << iValue << endl;
+        while (!input.atEnd()) {
+            sKey = input.readLine().toStdString();
+            iValue = input.readLine().toInt();
             mFile[sKey] = iValue;
 		}
-		fsOpenFile.close();
+		fileManagement.close();
         openFile();
+        QTextStream input(&fileManagement);
 		//make sure that the map only has the highscores from the file
-        while (getline(this->fsOpenFile, sline)) {
-			sKey = sline;
-            getline(this->fsOpenFile, sline);
-			iValue = stoi(sline);
+        while (!input.atEnd()) {
+            sKey = input.readLine().toStdString();
+            iValue = input.readLine().toInt();
             if (mFile[sKey] < iValue) {
                 mFile[sKey] = iValue;
                 std::cout << mFile[sKey] << endl;
 			}
 		}
 	}
-	fsOpenFile.close();
+	fileManagement.close();
 
 	return mFile;
 }
