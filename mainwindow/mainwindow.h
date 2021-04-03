@@ -9,6 +9,8 @@
 #include "../validation/validation.h"
 #include <QTimer>
 #include <algorithm>
+#include "changeterms.h"
+#include "options.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -30,6 +32,11 @@ public:
     QTimer *playTimer;
 
 
+
+
+
+public slots:
+      void getColors(short int);
 
 
 
@@ -76,6 +83,12 @@ private slots:
 
     void on_actionExit_triggered();
 
+    void on_btnChangeTerms_clicked();
+
+    void on_btnOptions_clicked();
+
+
+
 private:
     Ui::MainWindow *ui;
     Hangman hangman;
@@ -87,5 +100,7 @@ private:
     int iFirstValue;
     Validation validation;
     HighScore highscore;
+    ChangeTerms changeterms;
+    Options options;
 };
 #endif // MAINWINDOW_H

@@ -42,7 +42,7 @@ void Hangman::startGame()
                 //checks to see how many times the user has guested the word
 
 
-                if (!wordControler.getbWordupdate() && iIncorrectLetterCount <= 10) {
+                if (!wordControler.getbWordupdate() && iIncorrectLetterCount <= 10 ) {
                     cout << "Letter not found" << endl;
                     iIncorrectLetterCount++;
                     //sHint = wordControler.giveHint(this->iPos);

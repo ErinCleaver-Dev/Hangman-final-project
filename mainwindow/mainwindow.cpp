@@ -8,12 +8,14 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow),
       accessFile(":/easy.txt"),
       termsFromFile(accessFile.countStrings())
+
 {
     ui->setupUi(this);
     ui->stackedWidget->setCurrentIndex(0);
    // ui-stackedW
     //hangman.createMap(gMap);
     hangman.accessHighScoreFile();
+
 
     // time spent playing the game
     playTimer = new QTimer(this);
@@ -34,7 +36,11 @@ MainWindow::MainWindow(QWidget *parent)
     // set up event to monitor for selected widget changes
     connect(ui->stackedWidget, SIGNAL(currentChanged(int)), this, SLOT(on_stack_changed()));
 
-    
+    //connect to window form and change color with signal
+    connect(&options, SIGNAL(getTheColor(short int)),this, SLOT(getColors(short int)));
+
+
+
     
 }
 
@@ -304,5 +310,32 @@ void MainWindow::MyTimerSlot()
          iValCount1 *= 0;
     }
 
+
+}
+//Go to Edit terms page
+void MainWindow::on_btnChangeTerms_clicked()
+{
+        changeterms.show();
+        //close();
+}
+
+void MainWindow::on_btnOptions_clicked()
+{
+    options.show();
+   // hide();
+
+}
+//change background on user demand
+void MainWindow::getColors(short int iColor )
+{
+    if(iColor == 0){
+    ui->stackedWidget->setStyleSheet("background-color: rgb(37, 41, 109);");
+    }
+    else if (iColor == 1){
+        ui->stackedWidget->setStyleSheet("background-color: rgb(139,0,139);");
+    }
+    else if (iColor == 2){
+        ui->stackedWidget->setStyleSheet("background-color: rgb(0, 0, 0);");
+    }
 
 }

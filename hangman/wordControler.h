@@ -34,6 +34,7 @@ public:
 
 	void clearOutWord();
     string giveHint(int&);
+    int getLenght();
 
 };
 

@@ -126,6 +126,10 @@ void WordControler::getGuess(char& cGuess)
 }
 
 
+int WordControler::getLenght() {
+    return vCurrentWord.size();
+}
+
 // Used to update current letters being displayed.
 void WordControler::updateCurrentlyDisplayed(char& cGuess, int& iValue)
 {
@@ -184,3 +188,4 @@ string WordControler::giveHint(int& iHint) {
     return sHint;
 
 }
+

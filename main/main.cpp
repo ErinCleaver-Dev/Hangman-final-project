@@ -14,5 +14,6 @@ int main(int argc, char *argv[])
     w.show();
 
     a.setWindowIcon(QIcon(":/splashIcon.png"));
+    //a.setQuitOnLastWindowClosed(false);
     return a.exec();
 }

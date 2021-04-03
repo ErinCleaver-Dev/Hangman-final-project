@@ -23,6 +23,9 @@
       <height>591</height>
      </rect>
     </property>
+    <property name="cursor">
+     <cursorShape>ArrowCursor</cursorShape>
+    </property>
     <property name="autoFillBackground">
      <bool>false</bool>
     </property>
@@ -34,7 +37,7 @@
       <property name="geometry">
        <rect>
         <x>190</x>
-        <y>70</y>
+        <y>20</y>
         <width>481</width>
         <height>91</height>
        </rect>
@@ -55,10 +58,13 @@ border-radius: 3px;</string>
       <property name="geometry">
        <rect>
         <x>210</x>
-        <y>200</y>
+        <y>130</y>
         <width>441</width>
-        <height>101</height>
+        <height>71</height>
        </rect>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="toolTip">
        <string>Press here to start hanagman game</string>
@@ -85,10 +91,13 @@ border-radius: 25px;
       <property name="geometry">
        <rect>
         <x>210</x>
-        <y>310</y>
+        <y>220</y>
         <width>441</width>
-        <height>101</height>
+        <height>71</height>
        </rect>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="toolTip">
        <string>Press here to view highscore</string>
@@ -115,10 +124,13 @@ border-radius: 25px;
       <property name="geometry">
        <rect>
         <x>210</x>
-        <y>420</y>
+        <y>490</y>
         <width>441</width>
-        <height>101</height>
+        <height>71</height>
        </rect>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="toolTip">
        <string>Press here to exit the application </string>
@@ -139,6 +151,72 @@ border-radius: 25px;
       </property>
       <property name="text">
        <string>Exit</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnChangeTerms">
+      <property name="geometry">
+       <rect>
+        <x>210</x>
+        <y>310</y>
+        <width>441</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="toolTip">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Press here to change terms in file.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+      <property name="toolTipDuration">
+       <number>1000</number>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:0.966, stop:0.85 #CAF2FA, stop:0.99 #656B87);
+color: rgb(230, 225, 255);
+font: 28pt &quot;MS Shell Dlg 2&quot;;
+qproperty-alignment: AlignCenter;
+color: rgb(71, 113, 177);
+border-radius: 25px;
+
+
+</string>
+      </property>
+      <property name="text">
+       <string>Change Terms</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnOptions">
+      <property name="geometry">
+       <rect>
+        <x>210</x>
+        <y>400</y>
+        <width>441</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="toolTip">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Press here to change backscreen color&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+      <property name="toolTipDuration">
+       <number>1000</number>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:0.966, stop:0.85 #CAF2FA, stop:0.99 #656B87);
+color: rgb(230, 225, 255);
+font: 28pt &quot;MS Shell Dlg 2&quot;;
+qproperty-alignment: AlignCenter;
+color: rgb(71, 113, 177);
+border-radius: 25px;
+
+
+</string>
+      </property>
+      <property name="text">
+       <string>Options</string>
       </property>
      </widget>
     </widget>
@@ -999,7 +1077,7 @@ border-radius: 3px;</string>
      <x>0</x>
      <y>0</y>
      <width>802</width>
-     <height>21</height>
+     <height>26</height>
     </rect>
    </property>
    <widget class="QMenu" name="menufile">
