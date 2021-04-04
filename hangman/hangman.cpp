@@ -41,13 +41,7 @@ void Hangman::startGame()
                 wordControler.getGuess(cValue);
                 //checks to see how many times the user has guested the word
 
-
-                if (!wordControler.getbWordupdate() && iIncorrectLetterCount <= 10 ) {
-                    cout << "Letter not found" << endl;
-                    iIncorrectLetterCount++;
-                    //sHint = wordControler.giveHint(this->iPos);
-                }
-                else {
+                if(wordControler.getbWordupdate()) {
                     bIncremented = true;
                     iPointcounter++;
                 }
@@ -56,15 +50,23 @@ void Hangman::startGame()
 		// displays the currently know letters
         getCurrentTerm();
         //checks if the value was equal to or greater then 10
-        if (wordControler.runHangman()) {
-            iPointcounter+= 10;
-            highscore.updateHighScore(sUserName, iPointcounter);
-		}
+
 	}
 	catch (int e) {
 		cout << "An exception has occured.  " << e << '\n';
 	}
 
+    if (!bIncremented && iIncorrectLetterCount <= 10 ) {
+        cout << "Letter not found" << endl;
+        iIncorrectLetterCount++;
+        //sHint = wordControler.giveHint(this->iPos);
+    }
+    if (wordControler.runHangman()) {
+        iPointcounter+= 10;
+        highscore.updateHighScore(sUserName, iPointcounter);
+    }
+
+    bIncremented = false;
 	//updates the high score file
 	highscore.updateFile();
 	//clears out word controler
