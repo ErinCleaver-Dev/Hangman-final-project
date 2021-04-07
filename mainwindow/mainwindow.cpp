@@ -246,7 +246,6 @@ void MainWindow::on_bnGuess_clicked()
 void MainWindow::on_btGetHint_clicked()
 {
     ui->lbhint->setText(QString::fromStdString(hangman.getHint()));
-
 }
 
 // goes back to the main menu
@@ -295,8 +294,6 @@ void MainWindow::PlayTimerSlot() {
 //Calls the function to switch colors with timer of 1 minute
 void MainWindow::MyTimerSlot()
 {
-
-
     if (iValCount1 == 0){
          ui -> Hangman -> setStyleSheet("background-color: rgb(85, 72, 200);");
          iValCount1++;
@@ -309,21 +306,16 @@ void MainWindow::MyTimerSlot()
          ui -> Hangman -> setStyleSheet("background-color: rgb(110, 72, 237);");
          iValCount1 *= 0;
     }
-
-
 }
 //Go to Edit terms page
 void MainWindow::on_btnChangeTerms_clicked()
 {
-        changeterms.show();
-        //close();
+    changeterms.show();
 }
 
 void MainWindow::on_btnOptions_clicked()
 {
     options.show();
-   // hide();
-
 }
 //change background on user demand
 void MainWindow::getColors(short int iColor )
@@ -337,5 +329,12 @@ void MainWindow::getColors(short int iColor )
     else if (iColor == 2){
         ui->stackedWidget->setStyleSheet("background-color: rgb(0, 0, 0);");
     }
+}
 
+void MainWindow::on_btnAboutApp_clicked()
+{
+    QString aboutString = "Authors: Erin, Sandra, and Dave\n"
+                            "QT Assignment 10 - Ver: " + QString(APPLICATION_VER) + "\n"
+                            "CIS227 C++ Programming II";
+    QMessageBox::about(this, "About Hangman", aboutString);
 }
