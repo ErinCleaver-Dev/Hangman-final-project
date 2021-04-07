@@ -23,7 +23,7 @@ SplashScreen::SplashScreen(QWidget& parent) :
 
    // display required output. TODO: Eliminate manual threading.
    strMessage = "Application Ver: " + QString(APPLICATION_VER); // added a new DEFINES in .pro file.
-   hangSplash->showMessage("CIS227 Assignment 9 - Hangman", Qt::AlignBottom);
+   hangSplash->showMessage("CIS227 Assignment 10 - Hangman", Qt::AlignBottom);
    QThread::msleep(1500);
    hangSplash->showMessage("Authors: Erin, Sandra, and Dave", Qt::AlignBottom);
    QThread::msleep(1500);

@@ -89,6 +89,8 @@ private slots:
 
 
 
+    void on_btnAboutApp_clicked();
+
 private:
     Ui::MainWindow *ui;
     Hangman hangman;

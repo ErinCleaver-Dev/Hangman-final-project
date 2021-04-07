@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Hangman</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QStackedWidget" name="stackedWidget">
@@ -217,6 +217,39 @@ border-radius: 25px;
       </property>
       <property name="text">
        <string>Options</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnAboutApp">
+      <property name="geometry">
+       <rect>
+        <x>680</x>
+        <y>510</y>
+        <width>121</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="toolTip">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Press here to change backscreen color&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+      <property name="toolTipDuration">
+       <number>1000</number>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:0.966, stop:0.85 #CAF2FA, stop:0.99 #656B87);
+color: rgb(230, 225, 255);
+font: 14pt &quot;MS Shell Dlg 2&quot;;
+qproperty-alignment: AlignCenter;
+color: rgb(71, 113, 177);
+border-radius: 15px;
+
+
+</string>
+      </property>
+      <property name="text">
+       <string>About App</string>
       </property>
      </widget>
     </widget>
@@ -1077,7 +1110,7 @@ border-radius: 3px;</string>
      <x>0</x>
      <y>0</y>
      <width>802</width>
-     <height>26</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menufile">
