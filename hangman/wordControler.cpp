@@ -45,7 +45,7 @@ string WordControler::displayKnowLetters()
 
 
 // Lets the user guess a value for a speific space.
-void WordControler::getGuess(char& cGuess, int& iValue)
+void WordControler::getGuess(char& cGuess, unsigned int& iValue)
 {
 	
 	iValue -= iValue;
@@ -112,7 +112,7 @@ void WordControler::getGuess(char& cGuess)
 	setbWordUpdated(false);
 
 	// Goes through a for loop until the victory reachs 0
-	for (int iValue = 0; iValue < vCurrentlyDisplayed.size(); iValue++) {
+    for (unsigned iValue = 0; iValue < vCurrentlyDisplayed.size(); iValue++) {
 		// checks to see if the value provided is found in the array
 		if (vCurrentWord[iValue] == cGuess) {
 			//Checks to see if the value already exists for the letters that are currently displayed
@@ -131,7 +131,7 @@ int WordControler::getLenght() {
 }
 
 // Used to update current letters being displayed.
-void WordControler::updateCurrentlyDisplayed(char& cGuess, int& iValue)
+void WordControler::updateCurrentlyDisplayed(char& cGuess, unsigned int& iValue)
 {
 	vCurrentlyDisplayed[iValue] = cGuess;
 }
@@ -141,7 +141,7 @@ void WordControler::setbWordUpdated(bool bValue)
 {
 	this->bWordUpdated = bValue;
 }
-string WordControler::giveHint(int& iHint) {
+string WordControler::giveHint(unsigned int& iHint) {
     string sHint = "";
     switch (iHint)
     {

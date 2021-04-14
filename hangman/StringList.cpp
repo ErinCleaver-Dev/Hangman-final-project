@@ -39,7 +39,7 @@ StringList::StringList()
 }
 
 // used to get the size of the file.
-StringList::StringList(int iSize)
+StringList::StringList(unsigned int iSize)
 {
 	this->dTerms.resize(iSize);
 }
@@ -60,7 +60,7 @@ void StringList::setNewTermsList(bool bValue)
 }
 
 // Function to get terms from file
-void StringList::setTerms(int iPos, string& sValue)
+void StringList::setTerms(unsigned int iPos, string& sValue)
 {
 	this->dTerms[iPos] = sValue;
 
@@ -69,7 +69,7 @@ void StringList::setTerms(int iPos, string& sValue)
 
 
 // Selects the current term
-string StringList::getSelectedTerm(int &iPos)
+string StringList::getSelectedTerm(unsigned int &iPos)
 {
 
 	return dTerms.at(iPos);

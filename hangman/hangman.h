@@ -11,12 +11,12 @@ using namespace std;
 class Hangman : public HighScore
 {
 private:  
-    int iIncorrectLetterCount;
-    unsigned iPointcounter;
+    unsigned int iIncorrectLetterCount;
+    unsigned int iPointcounter;
 	WordControler wordControler;
     string sUserName;
     Hint hint;
-    int iPos;
+    unsigned int iPos;
 	HighScore highscore;
     string sHint;
     string sGuess;

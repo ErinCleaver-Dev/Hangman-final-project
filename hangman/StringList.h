@@ -22,7 +22,7 @@ public:
 	// constructors 
     StringList();
 	// A override that get the number of terms 
-    StringList(int);
+    StringList(unsigned int);
 
 	// Destructors
     ~StringList();
@@ -31,9 +31,9 @@ public:
 	
 
 
-	void setTerms(int iPos, string& sValue);
+    void setTerms(unsigned int iPos, string& sValue);
 	// Selects the current term
-	string getSelectedTerm(int&);
+    string getSelectedTerm(unsigned int&);
 
 	// Gets the Size of the Array.  
 	int getSize();

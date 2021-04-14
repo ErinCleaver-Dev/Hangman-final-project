@@ -10,7 +10,7 @@ private:
 	vector<char> vCurrentWord;
 	vector<char> vCurrentlyDisplayed;
 	bool bWordUpdated;
-	void updateCurrentlyDisplayed(char& , int& );
+    void updateCurrentlyDisplayed(char&, unsigned int& );
 	// sets the boolen value based on rather or not it is set
 	void setbWordUpdated(bool bValue);
 	bool getUpdate();
@@ -26,14 +26,14 @@ public:
 	//Displays the current information that has been guessed correctly
 	string displayKnowLetters();
 	
-	void getGuess(char& cGuess, int& iNumber);
+    void getGuess(char&, unsigned int&);
 	void getGuess(char& cGuess);
 	//Used to get the rather the term was found or not.
 	bool runHangman();
 	bool getbWordupdate();
 
 	void clearOutWord();
-    string giveHint(int&);
+    string giveHint(unsigned int&);
     int getLenght();
 
 };

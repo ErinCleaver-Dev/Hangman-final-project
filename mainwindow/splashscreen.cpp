@@ -17,8 +17,8 @@ SplashScreen::SplashScreen(QWidget& parent) :
 
     // Generate random quote
     srand(time(0)); // seed
-    int upperBound = quotesList.getSize();
-    int randIndex = rand() % upperBound + 1;
+    unsigned upperBound = quotesList.getSize();
+    unsigned randIndex = rand() % upperBound + 1;
     quote =  QString::fromStdString(quotesList.getSelectedTerm(randIndex));
 
    // display required output. TODO: Eliminate manual threading.
