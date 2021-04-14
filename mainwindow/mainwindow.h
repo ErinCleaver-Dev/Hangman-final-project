@@ -11,6 +11,7 @@
 #include <algorithm>
 #include "changeterms.h"
 #include "options.h"
+#include <QUrl>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -90,6 +91,8 @@ private slots:
 
 
     void on_btnAboutApp_clicked();
+
+    void on_btnEmailSupport_clicked();
 
 private:
     Ui::MainWindow *ui;

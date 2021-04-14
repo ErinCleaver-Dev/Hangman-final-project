@@ -1,7 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QPalette>
-
+#include <QDesktopServices>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -337,4 +337,9 @@ void MainWindow::on_btnAboutApp_clicked()
                             "QT Assignment 10 - Ver: " + QString(APPLICATION_VER) + "\n"
                             "CIS227 C++ Programming II";
     QMessageBox::about(this, "About Hangman", aboutString);
+}
+
+void MainWindow::on_btnEmailSupport_clicked()
+{
+    QDesktopServices::openUrl(QUrl("mailto:erincleaver@email.grcc.edu; sandrakhoury@email.grcc.edu; davidschreur@email.grcc.edu", QUrl::TolerantMode));
 }

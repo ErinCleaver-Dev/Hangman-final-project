@@ -252,6 +252,27 @@ border-radius: 15px;
        <string>About App</string>
       </property>
      </widget>
+     <widget class="QPushButton" name="btnEmailSupport">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>30</y>
+        <width>141</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:0.966, stop:0.85 #CAF2FA, stop:0.99 #656B87);
+color: rgb(230, 225, 255);
+font: 14pt &quot;MS Shell Dlg 2&quot;;
+qproperty-alignment: AlignCenter;
+color: rgb(71, 113, 177);
+border-radius: 15px;</string>
+      </property>
+      <property name="text">
+       <string>Email Support</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="GameForm">
      <widget class="QLabel" name="lbName">
