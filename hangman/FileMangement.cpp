@@ -88,7 +88,7 @@ void FileMangement::createFile(std::string& createFile)
 }
 
 //Used to modifiy existing files by getting the map for high score and the the file name.
-void FileMangement::updateFile(QMap<std::string, int>& mValue)
+void FileMangement::updateFile(QMap<std::string, unsigned>& mValue)
 {
 	//checks to make sure hte file is open
 
@@ -96,7 +96,7 @@ void FileMangement::updateFile(QMap<std::string, int>& mValue)
     if (fileManagement.open(QFile::WriteOnly | QFile::Text)) {
         QTextStream input(&fileManagement);
 		//getts the information from the map and places it in the file.
-        for (QMap<string, int>::iterator mFile = mValue.begin(); mFile != mValue.end(); ++mFile) {
+        for (QMap<string, unsigned>::iterator mFile = mValue.begin(); mFile != mValue.end(); ++mFile) {
             QString sTemp = QString::fromStdString(mFile.key()) + "\n" + QString::number(mFile.value())  + "\n";
             input << sTemp;
 		}
@@ -126,7 +126,7 @@ QMap<std::string, int> FileMangement::AccessFile()
     QMap<std::string, int> mFile;
 	std::string sline;
 	std::string sKey;
-	int iValue;
+    unsigned iValue;
     if (bFileOpen){
         //gets the information from the file
         while (!input.atEnd()) {

@@ -12,7 +12,7 @@ class Hangman : public HighScore
 {
 private:  
     int iIncorrectLetterCount;
-    int iPointcounter;
+    unsigned iPointcounter;
 	WordControler wordControler;
     string sUserName;
     Hint hint;
@@ -30,7 +30,7 @@ public:
 	//starts up the game
     void setName(string);
     string getName();
-    void setTerm (StringList&,int&);
+    void setTerm (StringList&,unsigned int&);
     void startGame();
 	//used to display the highscore
     string getIncorrectLetters();

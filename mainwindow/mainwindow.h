@@ -102,7 +102,7 @@ private:
     QMap<string, int> gMap;
     StringList termsFromFile;
     string sValue;
-    int iFirstValue;
+    unsigned iFirstValue;
     Validation validation;
     HighScore highscore;
     ChangeTerms changeterms;

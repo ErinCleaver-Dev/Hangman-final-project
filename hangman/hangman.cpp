@@ -18,7 +18,7 @@ string Hangman::getName() {
 }
 
 // sets the current term
-void Hangman::setTerm(StringList& termsList, int & iPos) {
+void Hangman::setTerm(StringList& termsList, unsigned int & iPos) {
 
     this->iPos = iPos;
     wordControler.setTerm(termsList.getSelectedTerm(this->iPos));

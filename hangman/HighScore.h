@@ -16,7 +16,7 @@ class HighScore
 private:
 	//assigns values to the virables 
 
-    QMap<string, int> siMapHighScore;
+    QMap<string, unsigned> siMapHighScore;
 	bool fileAccessed;
 	FileMangement accessFile;
 	int iStoreScore;
@@ -30,10 +30,10 @@ public:
     // Used to display the high score.  Gets the information from accessfile
     QSet<pair<int, string>> displayHighScore();
     //used to update the score of the user
-    void updateHighScore(string&, int&);
+    void updateHighScore(string&, unsigned&);
     //used to update the file information.
     void updateFile();
 	// Creates the map
-    void createMap(QMap<string, int>& hMap);
+    void createMap(QMap<string, unsigned>& hMap);
 };
 

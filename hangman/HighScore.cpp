@@ -17,7 +17,7 @@ HighScore::HighScore() :
 }
 
 
-void HighScore::createMap(QMap<string, int>& hMap) {
+void HighScore::createMap(QMap<string, unsigned>& hMap) {
     this->siMapHighScore = hMap;
 }
 
@@ -76,7 +76,7 @@ void HighScore::accessHighScoreFile()
 }
 
 //used to update the score of the user
-void HighScore::updateHighScore(string& name, int& iScore)
+void HighScore::updateHighScore(string& name, unsigned& iScore)
 {
 
     iStoreScore = iScore + iStoreScore;

@@ -43,7 +43,7 @@ public:
 
 	//Used to modifiy existing files by getting the map for 
 	//high score and the the file name.
-    void updateFile(QMap<string, int>&);
+    void updateFile(QMap<string, unsigned int>&);
     bool fileExists();
 
 	//access the file and feeds the information into high score.
