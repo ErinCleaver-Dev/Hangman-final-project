@@ -1,6 +1,7 @@
 #include "changeterms.h"
 #include "ui_changeterms.h"
 #include "mainwindow/mainwindow.h"
+
 #include <QMessageBox>
 
 ChangeTerms::ChangeTerms(QWidget *parent) :
@@ -10,6 +11,8 @@ ChangeTerms::ChangeTerms(QWidget *parent) :
     ui->setupUi(this);
     //signal to change lblterms and txtEditword whenever a word in combobox is selected
     connect(ui->comboBoxTerms, SIGNAL(currentIndexChanged(int)),this, SLOT(indexChanged()));
+
+
 }
 
 ChangeTerms::~ChangeTerms()
@@ -37,8 +40,6 @@ void ChangeTerms::OverWriteFile(QString fileName){
                     {
                      itemsInComboBox[i] = sWord + "\n";
                       qDebug() << "found you." + itemsInComboBox[i];
-
-
                    }
                   out << itemsInComboBox[i];
                   qDebug() << itemsInComboBox[i];

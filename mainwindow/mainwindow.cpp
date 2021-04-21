@@ -6,7 +6,7 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow),
-      accessFile(":/easy.txt"),
+      accessFile("easy.txt"),
       termsFromFile(accessFile.countStrings())
 
 {

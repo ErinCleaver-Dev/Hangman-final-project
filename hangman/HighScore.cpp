@@ -8,11 +8,11 @@ using namespace std;
 
 //assigns values to the variables 
 HighScore::HighScore() :
-    accessFile(":/highScroe.txt")
+    accessFile("highScroe.txt")
     {
     this->iStoreScore = 0;
     this->fileAccessed = false;
-    this->sfileName = "../hangman/highScroe.txt";
+    this->sfileName = "highScroe.txt";
 
 }
 
