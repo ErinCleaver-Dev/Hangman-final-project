@@ -1,4 +1,5 @@
-QT       += core gui
+QT       += core gui \
+            sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -10,6 +11,7 @@ CONFIG += c++11
 
 SOURCES += \
     changeterms.cpp \
+    dbproxy.cpp \
     hangman/FileMangement.cpp \
     hangman/HighScore.cpp \
     hangman/Hint.cpp \
@@ -25,6 +27,7 @@ SOURCES += \
 
 HEADERS += \
     changeterms.h \
+    dbproxy.h \
     hangman/FileMangement.h \
     hangman/HighScore.h \
     hangman/Hint.h \
@@ -53,6 +56,6 @@ DISTFILES += \
 RESOURCES += \
     Images.qrc
 
-VERSION = 2.0.0.0
+VERSION = 3.0.0.0
 
 DEFINES += APPLICATION_VER=\\\"$$VERSION\\\"

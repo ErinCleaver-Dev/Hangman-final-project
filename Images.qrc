@@ -6,5 +6,6 @@
         <file>easy.txt</file>
         <file>hard.txt</file>
         <file>medium.txt</file>
+        <file>terms.db</file>
     </qresource>
 </RCC>

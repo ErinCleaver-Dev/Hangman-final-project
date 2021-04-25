@@ -2,6 +2,8 @@
 #include <vector>
 #include <string>
 #include <algorithm>
+#include "qstring.h"
+#include "dbproxy.h"
 
 using namespace std;
 class WordControler
@@ -34,6 +36,7 @@ public:
 
 	void clearOutWord();
     string giveHint(unsigned int&);
+    string giveHintDb(QString&, unsigned int&);
     int getLenght();
 
 };

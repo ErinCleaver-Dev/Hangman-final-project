@@ -94,6 +94,8 @@ private slots:
 
     void on_btnEmailSupport_clicked();
 
+    void on_cbUseDatabase_stateChanged(int arg1);
+
 private:
     Ui::MainWindow *ui;
     Hangman hangman;

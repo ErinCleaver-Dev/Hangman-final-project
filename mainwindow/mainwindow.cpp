@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "dbproxy.h"
 #include <QPalette>
 #include <QDesktopServices>
 
@@ -7,15 +8,16 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow),
       accessFile("easy.txt"),
-      termsFromFile(accessFile.countStrings())
+      termsFromFile(12)
 
 {
     ui->setupUi(this);
     ui->stackedWidget->setCurrentIndex(0);
-   // ui-stackedW
-    //hangman.createMap(gMap);
+
     hangman.accessHighScoreFile();
 
+    // set db checkbox state based on the db connection status
+    ui->cbUseDatabase->setEnabled(DbProxy::getProxy()->getConnectionStatus());
 
     // time spent playing the game
     playTimer = new QTimer(this);
@@ -25,23 +27,16 @@ MainWindow::MainWindow(QWidget *parent)
     //timer used to change color every minute
     timer = new QTimer(this);
     timer->setTimerType(Qt::CoarseTimer);
-    connect(timer, SIGNAL(timeout()),this, SLOT(MyTimerSlot()));
-
+    connect(timer, SIGNAL(timeout()), this, SLOT(MyTimerSlot()));
 
     // set up event to monitor for selected widget changes
     connect(ui->stackedWidget, SIGNAL(currentChanged(int)), this, SLOT(on_stack_changed()));
-
-
 
     // set up event to monitor for selected widget changes
     connect(ui->stackedWidget, SIGNAL(currentChanged(int)), this, SLOT(on_stack_changed()));
 
     //connect to window form and change color with signal
-    connect(&options, SIGNAL(getTheColor(short int)),this, SLOT(getColors(short int)));
-
-
-
-    
+    connect(&options, SIGNAL(getTheColor(short int)),this, SLOT(getColors(short int)));    
 }
 
 MainWindow::~MainWindow()
@@ -62,10 +57,8 @@ void MainWindow::on_stack_changed()
         timer->stop();
         ui->lcdPlayTime->display(0);
         ui -> Hangman -> setStyleSheet("background-color: rgb(37, 41, 109);");
-
     }
 }
-
 
 // Exit the application
 void MainWindow::on_pushButton_clicked()
@@ -94,23 +87,39 @@ void MainWindow::on_bnSubmitName_clicked()
             this->iFirstValue =stoi(sNumber);
             // makes sure it is between 1 and 12.
             if(iFirstValue > 0 && iFirstValue <= 12) {
-                //Checks to make sure that  option was clicked.
-                if(ui->rbMixed->isChecked()) {
-                    iFirstValue-=1;
-                    hangman.setTerm(termslist, iFirstValue);
+
+                // if 'use db' is checked, get a record
+                if (ui->cbUseDatabase->isChecked())
+                {
+                    QString table;
+                    if (ui->rbEasy->isChecked())
+                        table = "Easy";
+                    else if (ui->rbMedium->isChecked())
+                        table = "Medium";
+                    else if (ui->rbHard->isChecked())
+                        table = "Hard";
+                    hangman.setTerm(table, iFirstValue);
                 }
-                //Checks to make sure that  option was clicked.
-                else if(ui->rbEasy->isChecked()) {
-                    accessFile.readFile(termsFromFile);
-                    hangman.setTerm(termsFromFile, iFirstValue);
-                } else if(ui->rbMedium->isChecked()) {
-                    accessFile.setFileName(":/medium.txt");
-                    accessFile.readFile(termsFromFile);
-                    hangman.setTerm(termsFromFile, iFirstValue);
-                } else if(ui->rbHard->isChecked()) {
-                    accessFile.setFileName(":/hard.txt");
-                    accessFile.readFile(termsFromFile);
-                    hangman.setTerm(termsFromFile, iFirstValue);
+                else
+                {
+                    //Checks to make sure that  option was clicked.
+                    if(ui->rbMixed->isChecked()) {
+                        iFirstValue-=1;
+                        hangman.setTerm(termslist, iFirstValue);
+                    }
+                    //Checks to make sure that  option was clicked.
+                    else if(ui->rbEasy->isChecked()) {
+                        accessFile.readFile(termsFromFile);
+                        hangman.setTerm(termsFromFile, iFirstValue);
+                    } else if(ui->rbMedium->isChecked()) {
+                        accessFile.setFileName(":/medium.txt");
+                        accessFile.readFile(termsFromFile);
+                        hangman.setTerm(termsFromFile, iFirstValue);
+                    } else if(ui->rbHard->isChecked()) {
+                        accessFile.setFileName(":/hard.txt");
+                        accessFile.readFile(termsFromFile);
+                        hangman.setTerm(termsFromFile, iFirstValue);
+                    }
                 }
                 // Gets the information from the text box
                 sName = ui->txGetName->text().toStdString();
@@ -245,7 +254,10 @@ void MainWindow::on_bnGuess_clicked()
 // Gits a hint
 void MainWindow::on_btGetHint_clicked()
 {
-    ui->lbhint->setText(QString::fromStdString(hangman.getHint()));
+    if (ui->cbUseDatabase->isChecked())
+        ui->lbhint->setText(QString::fromStdString(hangman.getHintDb()));
+    else
+        ui->lbhint->setText(QString::fromStdString(hangman.getHint()));
 }
 
 // goes back to the main menu
@@ -334,7 +346,7 @@ void MainWindow::getColors(short int iColor )
 void MainWindow::on_btnAboutApp_clicked()
 {
     QString aboutString = "Authors: Erin, Sandra, and Dave\n"
-                            "QT Assignment 10 - Ver: " + QString(APPLICATION_VER) + "\n"
+                            "QT Hangman - Ver: " + QString(APPLICATION_VER) + "\n"
                             "CIS227 C++ Programming II";
     QMessageBox::about(this, "About Hangman", aboutString);
 }
@@ -342,4 +354,15 @@ void MainWindow::on_btnAboutApp_clicked()
 void MainWindow::on_btnEmailSupport_clicked()
 {
     QDesktopServices::openUrl(QUrl("mailto:erincleaver@email.grcc.edu; sandrakhoury@email.grcc.edu; davidschreur@email.grcc.edu", QUrl::TolerantMode));
+}
+
+void MainWindow::on_cbUseDatabase_stateChanged(int arg1)
+{
+    if (arg1 == Qt::Unchecked)
+        ui->rbMixed->setEnabled(true);
+    else
+    {
+        ui->rbEasy->setChecked(true);
+        ui->rbMixed->setEnabled(false);
+    }
 }

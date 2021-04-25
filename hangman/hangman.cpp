@@ -1,6 +1,5 @@
 #include "hangman.h"
 
-
 Hangman::Hangman()
 {
     this->iIncorrectLetterCount = 0;
@@ -22,6 +21,18 @@ void Hangman::setTerm(StringList& termsList, unsigned int & iPos) {
 
     this->iPos = iPos;
     wordControler.setTerm(termsList.getSelectedTerm(this->iPos));
+    iPointcounter = 0;
+    iIncorrectLetterCount = 0;
+}
+
+// overloaded method for db access
+void Hangman::setTerm(QString& table, unsigned int& key)
+{
+    this->iPos = key;
+    this->table = table;
+    QPair<QString, QString> pair;
+    pair = DbProxy::getProxy()->getTermHintPair(table, key);
+    wordControler.setTerm(pair.first.toStdString());
     iPointcounter = 0;
     iIncorrectLetterCount = 0;
 }
@@ -101,6 +112,12 @@ string Hangman::getCurrentTerm() {
 // gets the value for hint.
 string Hangman::getHint() {
     return sHint = wordControler.giveHint(this -> iPos);
+}
+
+// gets a hint from the db record
+string Hangman::getHintDb()
+{
+    return sHint = wordControler.giveHintDb(this->table, this->iPos);
 }
 
 // returns whether the score was updated after the previous guess.

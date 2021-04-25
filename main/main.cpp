@@ -6,11 +6,8 @@
 #include <QDir>
 #include <QFile>
 
-//call functions to copy text files into buildQTFolder from assignment7 master folder
-void makeEasyText();
-void makeMediumText();
-void makeHardText();
-void makeHighScore();
+// forward dec
+void copyResourceToOutput(QString namedResource, QString outputFile);
 
 int main(int argc, char *argv[])
 {
@@ -18,10 +15,12 @@ int main(int argc, char *argv[])
 
     QApplication a(argc, argv);
 
-    makeEasyText();//call functions to make txt files
-    makeMediumText();
-    makeHardText();
-    makeHighScore();
+    // copy resource files to output dir
+    copyResourceToOutput(":/terms.db", "/terms.db");
+    copyResourceToOutput(":/easy.txt", "/easy.txt");
+    copyResourceToOutput(":/medium.txt", "/medium.txt");
+    copyResourceToOutput(":/hard.txt", "/hard.txt");
+    copyResourceToOutput(":/highScroe.txt", "/highScroe.txt");
 
     MainWindow w;
     SplashScreen splashScreen(w); // dispose on w.show
@@ -30,72 +29,17 @@ int main(int argc, char *argv[])
     a.setWindowIcon(QIcon(":/splashIcon.png"));
     return a.exec();
 }
-//copy easy textfile
-void makeEasyText(){
 
-    qDebug() << QDir::currentPath().append("/easy.txt");
-    QString name = QDir::currentPath();
-    //get destination of file and append the name to it
-    QFile file(name.append("/easy.txt"));
-    QFile fileEasy(":/easy.txt");
-    //check if file does not exist, if it doesn't it will copy it
-       if (!file.exists())
-       {
-          // QFile::remove(name);
-           fileEasy.copy(name);
-           //allow perrmission to write into file
-           file.setPermissions(QFile::WriteUser);
-           qDebug()<< "Easy.txt created";
-       }
-
-}
-
-void makeMediumText(){
-
-    qDebug() << QDir::currentPath().append("/medium.txt");
-    QString name = QDir::currentPath();
-
-    QFile file(name.append("/medium.txt"));
-    QFile fileMed(":/medium.txt");
-
-       if (!file.exists())
-       {
-           fileMed.copy(name);
-            file.setPermissions(QFile::WriteUser);
-           qDebug()<< "Medium.txt created";
-       }
-}
-
-void makeHardText(){
-
-    qDebug() << QDir::currentPath().append("/hard.txt");
-    QString name = QDir::currentPath();
-
-    QFile file(name.append("/hard.txt"));
-    QFile fileEasy(":/hard.txt");
-
-       if (!file.exists())
-       {
-           fileEasy.copy(name);
-           file.setPermissions(QFile::WriteUser);
-           qDebug()<< "hard.txt created";
-       }
-
-}
-
-void makeHighScore(){
-
-    qDebug() << QDir::currentPath().append("/highScroe.txt");
-    QString name = QDir::currentPath();
-
-    QFile file(name.append("/highScroe.txt"));
-    QFile fileHighScore(":/highScroe.txt");
-
-       if (!file.exists())
-       {
-           fileHighScore.copy(name);
-           file.setPermissions(QFile::WriteUser);
-           qDebug()<< "highscore.txt created";
-       }
-
+// Copy named resource to output directory.
+void copyResourceToOutput(QString namedResource, QString outputFile)
+{
+    QString currentDir = QDir::currentPath();
+    QFile fileToAppend(currentDir.append(outputFile));
+    QFile resourceFileToCopy(namedResource);
+    if (!fileToAppend.exists())
+    {
+        resourceFileToCopy.copy(currentDir);
+        resourceFileToCopy.setPermissions(QFile::WriteUser);
+        qDebug() << "Successfully copied " << outputFile << " to the output dir.";
+    }
 }

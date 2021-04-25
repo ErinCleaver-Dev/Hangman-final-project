@@ -278,7 +278,7 @@ border-radius: 15px;</string>
      <widget class="QLabel" name="lbName">
       <property name="geometry">
        <rect>
-        <x>40</x>
+        <x>80</x>
         <y>470</y>
         <width>141</width>
         <height>101</height>
@@ -299,7 +299,7 @@ border-radius: 3px;</string>
      <widget class="QPushButton" name="bnSubmitName">
       <property name="geometry">
        <rect>
-        <x>610</x>
+        <x>620</x>
         <y>470</y>
         <width>181</width>
         <height>101</height>
@@ -329,7 +329,7 @@ border-radius: 25px;
      <widget class="QLabel" name="label_2">
       <property name="geometry">
        <rect>
-        <x>40</x>
+        <x>80</x>
         <y>350</y>
         <width>141</width>
         <height>91</height>
@@ -354,7 +354,7 @@ border-radius: 3px;</string>
      <widget class="QLabel" name="label_3">
       <property name="geometry">
        <rect>
-        <x>180</x>
+        <x>210</x>
         <y>10</y>
         <width>421</width>
         <height>91</height>
@@ -375,7 +375,7 @@ border-radius: 3px;</string>
      <widget class="QLineEdit" name="txGetNumber">
       <property name="geometry">
        <rect>
-        <x>220</x>
+        <x>260</x>
         <y>350</y>
         <width>331</width>
         <height>101</height>
@@ -399,7 +399,7 @@ border-radius: 3px;</string>
      <widget class="QLineEdit" name="txGetName">
       <property name="geometry">
        <rect>
-        <x>220</x>
+        <x>260</x>
         <y>470</y>
         <width>331</width>
         <height>101</height>
@@ -423,7 +423,7 @@ border-radius: 3px;</string>
      <widget class="QGroupBox" name="RadioButtons">
       <property name="geometry">
        <rect>
-        <x>220</x>
+        <x>260</x>
         <y>120</y>
         <width>331</width>
         <height>211</height>
@@ -519,6 +519,30 @@ border-radius: 3px;</string>
         <bool>true</bool>
        </property>
       </widget>
+     </widget>
+     <widget class="QCheckBox" name="cbUseDatabase">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>260</y>
+        <width>141</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(231, 229, 240);
+font: 12pt &quot;MS Shell Dlg 2&quot;;
+qproperty-alignment: AlignCenter;
+color: rgb(71, 113, 177);
+border: 2px solid black;
+border-radius: 3px;</string>
+      </property>
+      <property name="text">
+       <string>Use Database</string>
+      </property>
      </widget>
     </widget>
     <widget class="QWidget" name="Hangman">
@@ -692,7 +716,7 @@ border-radius: 3px;</string>
       </property>
       <property name="styleSheet">
        <string notr="true">background-color: rgb(231, 229, 240);
-font: 28pt &quot;MS Shell Dlg 2&quot;;
+font: 18pt &quot;MS Shell Dlg 2&quot;;
 qproperty-alignment: AlignCenter;
 color: rgb(100, 166, 181);
 border: 2px solid black;

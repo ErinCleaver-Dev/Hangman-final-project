@@ -3,6 +3,7 @@
 #include "StringList.h"
 #include "Hint.h"
 #include "HighScore.h"
+#include "dbproxy.h"
 #include <iostream>
 #include <QMainWindow>
 
@@ -17,6 +18,7 @@ private:
     string sUserName;
     Hint hint;
     unsigned int iPos;
+    QString table;
 	HighScore highscore;
     string sHint;
     string sGuess;
@@ -31,12 +33,14 @@ public:
     void setName(string);
     string getName();
     void setTerm (StringList&,unsigned int&);
+    void setTerm(QString&, unsigned int&); // method overload for db access
     void startGame();
 	//used to display the highscore
     string getIncorrectLetters();
     string getCurrentPoints ();
     string getCurrentTerm ();
     string getHint();
+    string getHintDb();
     void setGuess(string& sGuest);
     bool scoreIncremented();
 };

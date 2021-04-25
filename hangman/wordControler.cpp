@@ -141,6 +141,13 @@ void WordControler::setbWordUpdated(bool bValue)
 {
 	this->bWordUpdated = bValue;
 }
+
+// gets a hint from a db record, given a table and key
+string WordControler::giveHintDb(QString& table, unsigned int& key)
+{
+    return DbProxy::getProxy()->getTermHintPair(table, key).second.toStdString();;
+}
+
 string WordControler::giveHint(unsigned int& iHint) {
     string sHint = "";
     switch (iHint)
