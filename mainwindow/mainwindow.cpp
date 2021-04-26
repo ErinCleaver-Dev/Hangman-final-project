@@ -226,6 +226,8 @@ void MainWindow::on_bnGuess_clicked()
         ui->lbKnowWord->setText(QString::fromStdString(hangman.getCurrentTerm()));
         ui->lbPoints->setText(QString::fromStdString(hangman.getCurrentPoints()));
         ui->lbIncorrect->setText(QString::fromStdString(hangman.getIncorrectLetters()));
+        //clears out word after guess
+        ui->txGuess->clear();
 
         // TODO: Implement settings file to turn this off if the user wants to.
         if(hangman.scoreIncremented()) { CorrectGuessBox(); }
