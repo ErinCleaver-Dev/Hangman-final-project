@@ -109,14 +109,17 @@ void MainWindow::on_bnSubmitName_clicked()
                     }
                     //Checks to make sure that  option was clicked.
                     else if(ui->rbEasy->isChecked()) {
+                        iFirstValue-=1;
                         accessFile.readFile(termsFromFile);
                         hangman.setTerm(termsFromFile, iFirstValue);
                     } else if(ui->rbMedium->isChecked()) {
-                        accessFile.setFileName(":/medium.txt");
+                        iFirstValue-=1;
+                        accessFile.setFileName("medium.txt");
                         accessFile.readFile(termsFromFile);
                         hangman.setTerm(termsFromFile, iFirstValue);
                     } else if(ui->rbHard->isChecked()) {
-                        accessFile.setFileName(":/hard.txt");
+                        iFirstValue-=1;
+                        accessFile.setFileName("hard.txt");
                         accessFile.readFile(termsFromFile);
                         hangman.setTerm(termsFromFile, iFirstValue);
                     }
